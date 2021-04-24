@@ -2,8 +2,8 @@
 # Copyright (C) 2020-present Shanti Gilbert (https://github.com/shantigilbert)
 
 PKG_NAME="duckstation"
-PKG_VERSION="6a29be9fd178311ad035b7af65f2e2a29168844e"
-PKG_SHA256="bbb0d3f1f81075ae30e79377c03017fa882fe36d4efb824fad94dfcdd3d28af9"
+PKG_VERSION="2be5b81b685a2064709ee6ed1f75f15c36752650"
+PKG_SHA256="9fc4adb7f1ad15a69972839b324946f0b30c48f27bf860f7741360f89d537ce6"
 PKG_ARCH="aarch64"
 PKG_LICENSE="GPLv3"
 PKG_SITE="https://github.com/libretro/duckstation"

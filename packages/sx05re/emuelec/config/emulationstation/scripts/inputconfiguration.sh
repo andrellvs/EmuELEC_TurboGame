@@ -217,6 +217,6 @@ home="/storage"
 rootdir="/storage"
 configdir="$rootdir/.config"
 
-source "$home/.config/emuelec/scriptmodules/inifuncs.sh"
+source "/usr/bin/scripts/scriptmodules/inifuncs.sh"
 
 getAutoConf "disable" || inputconfiguration
