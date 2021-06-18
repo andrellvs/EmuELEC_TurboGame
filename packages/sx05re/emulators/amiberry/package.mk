@@ -21,7 +21,7 @@ pre_configure_target() {
      if [ $ARCH == "arm" ]; then
         AMIBERRY_PLATFORM="AMLGX"
      else 
-        AMIBERRY_PLATFORM="pi64"
+        AMIBERRY_PLATFORM="a64"
      fi
       ;;
     Amlogic-ng)
@@ -37,7 +37,7 @@ if [ "$DEVICE" == "OdroidGoAdvance" ] || [ "$DEVICE" == "GameForce" ]; then
 if [ $ARCH == "arm" ]; then
 AMIBERRY_PLATFORM="RK3326"
 else 
-AMIBERRY_PLATFORM="pi64"
+AMIBERRY_PLATFORM="go-advance"
 fi
 
 fi

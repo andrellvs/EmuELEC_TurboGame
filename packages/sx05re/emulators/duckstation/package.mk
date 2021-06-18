@@ -1,24 +1,21 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Copyright (C) 2020-present Shanti Gilbert (https://github.com/shantigilbert)
+# Copyright (C) 2021-present Shanti Gilbert (https://github.com/shantigilbert)
 
 PKG_NAME="duckstation"
-PKG_VERSION="2be5b81b685a2064709ee6ed1f75f15c36752650"
-PKG_SHA256="9fc4adb7f1ad15a69972839b324946f0b30c48f27bf860f7741360f89d537ce6"
+PKG_VERSION="8b234c06"
+PKG_SHA256="3a986bc77837e92a116413956c6863b876effb018dbfd5da962d26ebd0f1c4b1"
+PKG_LICENSE="NON-COMMERCIAL"
 PKG_ARCH="aarch64"
-PKG_LICENSE="GPLv3"
-PKG_SITE="https://github.com/libretro/duckstation"
-PKG_URL="$PKG_SITE/archive/$PKG_VERSION.tar.gz"
-PKG_DEPENDS_TARGET="toolchain nasm:host $OPENGLES"
-PKG_SECTION="libretro"
-PKG_SHORTDESC="DuckStation - PlayStation 1, aka. PSX Emulator"
-PKG_TOOLCHAIN="cmake"
-PKG_BUILD_FLAGS="-lto"
+PKG_SITE="https://www.duckstation.org/libretro"
+PKG_URL="${PKG_SITE}/duckstation_libretro_linux_aarch64.zip"
+PKG_SHORTDESC="Fast PlayStation 1 emulator for PC and Android "
+PKG_TOOLCHAIN="manual"
 
-pre_configure_target() {
- PKG_CMAKE_OPTS_TARGET+=" -DCMAKE_BUILD_TYPE=Release -DBUILD_LIBRETRO_CORE=ON "
+pre_unpack() {
+	unzip sources/duckstation/duckstation-${PKG_VERSION}.zip -d $PKG_BUILD
 }
 
 makeinstall_target() {
-  mkdir -p $INSTALL/usr/lib/libretro
-  cp $PKG_BUILD/.$TARGET_NAME/duckstation_libretro.so $INSTALL/usr/lib/libretro/
+	mkdir -p $INSTALL/usr/lib/libretro
+	cp $PKG_BUILD/duckstation_libretro.so $INSTALL/usr/lib/libretro
 }

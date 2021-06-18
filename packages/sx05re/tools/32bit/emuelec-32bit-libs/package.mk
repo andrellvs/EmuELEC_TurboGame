@@ -2,8 +2,8 @@
 # Copyright (C) 2019-present Shanti Gilbert (https://github.com/shantigilbert)
 
 PKG_NAME="emuelec-32bit-libs"
-PKG_VERSION="0127ed6c0db21fdc5a655a36611e682a877ea934"
-PKG_SHA256="fa6bff6521ed69080af6fed8961c5e4494ccd8b120f434fa8f6ef793f28d0efa"
+PKG_VERSION="34eea148686949169e59933b3bd7271956962668"
+PKG_SHA256="e7bb643ba5311fa8a585aeec2974def00ee4a3b5d7077acc24cf6d33e6986614"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
@@ -16,7 +16,7 @@ PKG_TOOLCHAIN="manual"
 makeinstall_target() {
   mkdir -p $INSTALL
 if [[ "$DEVICE" == "OdroidGoAdvance" ]] || [[ "$DEVICE" == "GameForce" ]]; then
-	cp "$(get_build_dir mali-bifrost)/lib/arm-linux-gnueabihf/libmali-bifrost-g31-rxp0-gbm.so" $PKG_BUILD/OdroidGoAdvance/usr/config/emuelec/lib32/libmali.so
+	cp "$(get_build_dir mali-bifrost)/libmali.so_rk3326_gbm_arm32_r13p0_with_vulkan_and_cl" $PKG_BUILD/OdroidGoAdvance/usr/config/emuelec/lib32/libmali.so
 	cp -rf $PKG_BUILD/OdroidGoAdvance/* $INSTALL/
 	
 	if [[ "$DEVICE" == "GameForce" ]]; then

@@ -2,7 +2,7 @@
 # Copyright (C) 2019-present Shanti Gilbert (https://github.com/shantigilbert)
 
 PKG_NAME="emuelec-emulationstation"
-PKG_VERSION="cc93e71747a4f63881e97c090b317677948b9228"
+PKG_VERSION="1d816201fd9b7e591c83691df7091da26e4bcf4e"
 PKG_GIT_CLONE_BRANCH="EmuELEC"
 PKG_REV="1"
 PKG_ARCH="any"
@@ -87,10 +87,15 @@ makeinstall_target() {
     fi
 
     if [[ "${DEVICE}" == "OdroidGoAdvance" ]] || [[ "${DEVICE}" == "GameForce" ]]; then
-        sed -i "s|<\/config>|	<string name=\"GamelistViewStyle\" value=\"Small Screen\" />\n<string name=\"ThemeSystemView\" value=\"classic\" />\n<\/config>|g" "$INSTALL/usr/config/emulationstation/es_settings.cfg"
+        sed -i "s|<\/config>|	<string name=\"GamelistViewStyle\" value=\"Small Screen\" />\n<\/config>|g" "$INSTALL/usr/config/emulationstation/es_settings.cfg"
+        sed -i "s|value=\"panel\" />|value=\"small panel\" />|g" "$INSTALL/usr/config/emulationstation/es_settings.cfg"
     fi
     
-    
+    if  [[ "${DEVICE}" == "GameForce" ]]; then
+    	mkdir -p $INSTALL/usr/config/emulationstation/themesettings
+        sed -i "s|<\/config>|	<string name=\"subset.ratio\" value=\"43\" />\n<\/config>|g" "$INSTALL/usr/config/emulationstation/es_settings.cfg"
+        echo "subset.ratio=43" > $INSTALL/usr/config/emulationstation/themesettings/Crystal.cfg
+    fi    
 }
 
 post_install() {  
