@@ -48,18 +48,18 @@ fi
 # Set video mode, this has to be done before starting ES
 DEFE=$(get_ee_setting ee_videomode)
 
-if [ "${DEFE}" != "Custom" ]; then
-    [ ! -z "${DEFE}" ] && echo "${DEFE}" > /sys/class/display/mode
-fi 
-
-if [ -s "/storage/.config/EE_VIDEO_MODE" ]; then
-        echo $(cat /storage/.config/EE_VIDEO_MODE) > /sys/class/display/mode
+if [ "${DEFE}" == "Custom" ]; then
+	DEFE=$(cat /sys/class/display/mode)
+elif [ -s "/storage/.config/EE_VIDEO_MODE" ]; then
+	DEFE=$(cat /storage/.config/EE_VIDEO_MODE)
 elif [ -s "/flash/EE_VIDEO_MODE" ]; then
-        echo $(cat /flash/EE_VIDEO_MODE) > /sys/class/display/mode
+	DEFE=$(cat /flash/EE_VIDEO_MODE)
+else
+	DEFE=$(cat /sys/class/display/mode)
 fi
 
 # finally we correct the FB according to video mode
-/emuelec/scripts/setres.sh
+[ ! -z "${DEFE}" ] && /emuelec/scripts/setres.sh ${DEFE}
 
 # Clean cache garbage when boot up.
 rm -rf /storage/.cache/cores/*
