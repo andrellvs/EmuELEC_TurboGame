@@ -12,7 +12,7 @@
 . /etc/profile
 
 RETROARCHIVEMENTS=(3do arcade atari2600 atari7800 atarilynx coleco colecovision famicom fbn fbneo fds gamegear gb gba gbc lynx mame genesis mastersystem megadrive megadrive-japan msx n64 neogeo nes ngp pcengine pcfx pokemini psx saturn sega32x segacd sfc sg-1000 snes tg16 vectrex virtualboy wonderswan)
-NOREWIND=(sega32x psx zxspectrum odyssey2 mame n64 dreamcast atomiswave naomi neogeocd saturn psp pspminis)
+NOREWIND=(sega32x zxspectrum odyssey2 mame n64 dreamcast atomiswave naomi neogeocd saturn psp pspminis)
 NORUNAHEAD=(psp sega32x n64 dreamcast atomiswave naomi neogeocd saturn)
 
 INDEXRATIOS=(4/3 16/9 16/10 16/15 21/9 1/1 2/1 3/2 3/4 4/1 9/16 5/4 6/5 7/9 8/3 8/7 19/12 19/14 30/17 32/9 config squarepixel core custom)
@@ -243,14 +243,14 @@ case ${1} in
     
     sed -i "/state_slot =/d" ${RACONF}
 
-if [ ! -z ${SNAPSHOT} ]; then    
+if [[ ! -z ${SNAPSHOT} ]]; then    
         sed -i "/savestate_auto_load =/d" ${RACONF}
         sed -i "/savestate_auto_save =/d" ${RACONF}
         echo 'savestate_auto_save = "true"' >> ${RACONF}
         echo 'savestate_auto_load = "true"' >> ${RACONF}
         echo "state_slot = \"${SNAPSHOT}\"" >> ${RACONF}
 else
-    if [ ${AUTOLOAD} == "false" ]; then
+    if [[ ${AUTOLOAD} == "false" ]]; then
         sed -i "/savestate_auto_load =/d" ${RACONF}
         sed -i "/savestate_auto_save =/d" ${RACONF}
         
@@ -422,8 +422,10 @@ else
         
     if [ "${EES}" == "false" ] || [ "${EES}" == "none" ] || [ "${EES}" == "0" ] || [ "${EES}" == "1" ]; then        
         echo 'aspect_ratio_index = "1"' >> ${RACONF}
+        IRBEZEL="1"
     else
-        echo 'aspect_ratio_index = "${EES}"' >> ${RACONF}
+        echo "aspect_ratio_index = \"${EES}\"" >> ${RACONF}
+        IRBEZEL="${EES}"
     fi
         case "$(oga_ver)" in
             "OGA")
@@ -533,6 +535,14 @@ sed -i "/atari800_system =/d" ${ATARI800CONF}
             echo "STEREO_POKEY=1" >> ${ATARICONF}
             echo "BUILTIN_BASIC=1" >> ${ATARICONF}
      fi
+fi
+
+if [ "${PLATFORM}" == "amstradgx4000" ]; then
+# Make sure cap32_model is set to "6128+"
+GX4000CONF="/storage/.config/retroarch/config/cap32/cap32.opt"
+[[ ! -f "${GX4000CONF}" ]] && touch "${GX4000CONF}"
+    sed -i "/cap32_model =/d" "${GX4000CONF}"
+    echo "cap32_model = \"6128+\"" >> "${GX4000CONF}"
 fi
 
 if [ "${CORE}" == "gambatte" ]; then

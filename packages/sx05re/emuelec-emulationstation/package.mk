@@ -2,7 +2,7 @@
 # Copyright (C) 2019-present Shanti Gilbert (https://github.com/shantigilbert)
 
 PKG_NAME="emuelec-emulationstation"
-PKG_VERSION="1d816201fd9b7e591c83691df7091da26e4bcf4e"
+PKG_VERSION="466c145a47f45e8ecbda80b430c7ccdee3d75c9c"
 PKG_GIT_CLONE_BRANCH="EmuELEC"
 PKG_REV="1"
 PKG_ARCH="any"
@@ -20,7 +20,7 @@ GET_HANDLER_SUPPORT="git"
 PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET Crystal"
 
 pre_configure_target() {
-PKG_CMAKE_OPTS_TARGET=" -DENABLE_EMUELEC=1 -DDISABLE_KODI=1 -DENABLE_FILEMANAGER=1 "
+PKG_CMAKE_OPTS_TARGET=" -DENABLE_EMUELEC=1 -DDISABLE_KODI=1 -DENABLE_FILEMANAGER=1 -DGLES2=1"
 
 # Read api_keys.txt if it exist to add the required keys for cheevos, thegamesdb and screenscrapper. You need to get your own API keys. 
 # File should be in this format

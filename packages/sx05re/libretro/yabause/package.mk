@@ -19,7 +19,7 @@
 ################################################################################
 
 PKG_NAME="yabause"
-PKG_VERSION="4d85b6e793030c77ae6b64fd7c99041c935b54ac"
+PKG_VERSION="739a846482bc960aafbfd7dcd7211c187fe3be01"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPLv2"
