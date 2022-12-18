@@ -56,7 +56,7 @@ rm -f System*.dll mscorlib.dll FNA.dll Mono.*.dll
 if [[ ! -f "${GAMEDIR}/MMLoader.exe" ]]; then
     ee_console enable
     echo "Copying port files, this will only be done on the first run. Please wait..."
-    tar –xvzf /emuelec/configs/tmntsr.tar.xz –C "${ROMSDIRECTORY}/ports"
+    tar -xvf /emuelec/configs/tmntsr.tar.xz -C "${ROMSDIRECTORY}/ports"
     ee_console disable
 fi
 
@@ -75,7 +75,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # For Amlogic-NG we need the textures at full size so skip the conversion
-touch "${GAMEDIR}/gamedata/.astc_done"
+[[ "$EE_DEVICE" == "Amlogic-ng" ]] && touch "${GAMEDIR}/gamedata/.astc_done"
 
 # Textures not converted? let's perform first time setup
 if [[ ! -f "${GAMEDIR}/gamedata/.astc_done" ]]; then
