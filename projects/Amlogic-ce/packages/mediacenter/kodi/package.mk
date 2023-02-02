@@ -4,8 +4,8 @@
 # Copyright (C) 2020-present Team CoreELEC (https://coreelec.tv)
 
 PKG_NAME="kodi"
-PKG_VERSION="b7f1708b79473af5352370ad9f4aee347be322fe"
-PKG_SHA256="c369ea54094b60cd17685e929b6aeefcbaea2ef96039192076dba951aad3a0b4"
+PKG_VERSION="b75177162b40d8eb553b9c3491e1bbdc4344bfbb"
+PKG_SHA256="e7c64742ee62c7a88910292c3a70aa4c0e3b457e017b02ef0e045c3d7d49ba30"
 PKG_LICENSE="GPL"
 PKG_SITE="http://www.kodi.tv"
 PKG_URL="https://github.com/CoreELEC/xbmc/archive/$PKG_VERSION.tar.gz"
@@ -15,16 +15,16 @@ PKG_LONGDESC="A free and open source cross-platform media player."
 PKG_BUILD_FLAGS="+speed"
 
 post_unpack() {
-  if [ -f ${DISTRO_DIR}/${DISTRO}/splash/splash-1080.png ]; then
+  if [ -f ${DISTRO_DIR}/${DISTRO}/splash/${DEVICE}/splash-1080.png ]; then
     rm -rf $(get_build_dir ${PKG_NAME})/media/splash.*
-    cp -PR ${DISTRO_DIR}/${DISTRO}/splash/splash-1080.png $(get_build_dir ${PKG_NAME})/media/splash.png
+    cp -PR ${DISTRO_DIR}/${DISTRO}/splash/${DEVICE}/splash-1080.png $(get_build_dir ${PKG_NAME})/media/splash.png
   fi
 
   sed -e "s|@ADDON_REPO_ID@|$ADDON_REPO_ID|g" -i $(get_build_dir ${PKG_NAME})/version.txt
   sed -e "s|@ADDON_SERVER_URL@|$ADDON_SERVER_URL|g" -i $(get_build_dir ${PKG_NAME})/version.txt
 
   # don't build internal TexturePacker
-  sed -i 's|set(INTERNAL_TEXTUREPACKER_INSTALLABLE TRUE)|set(INTERNAL_TEXTUREPACKER_INSTALLABLE FALSE)|' \
+  sed -i 's|set(INTERNAL_TEXTUREPACKER_INSTALLABLE TRUE|set(INTERNAL_TEXTUREPACKER_INSTALLABLE FALSE|' \
     $(get_build_dir ${PKG_NAME})/cmake/modules/buildtools/FindTexturePacker.cmake
 }
 
@@ -365,7 +365,6 @@ post_makeinstall_target() {
     ln -sf /usr/bin/pastekodi $INSTALL/usr/bin/pastecrash
 
   mkdir -p $INSTALL/usr/share/kodi/addons
-    cp -R $PKG_DIR/config/repository.kodi.game $INSTALL/usr/share/kodi/addons
     cp -R $PKG_DIR/config/repository.coreelec $INSTALL/usr/share/kodi/addons/$ADDON_REPO_ID
     sed -e "s|@ADDON_URL@|$ADDON_URL|g" -i $INSTALL/usr/share/kodi/addons/$ADDON_REPO_ID/addon.xml
     sed -e "s|@ADDON_REPO_ID@|$ADDON_REPO_ID|g" -i $INSTALL/usr/share/kodi/addons/$ADDON_REPO_ID/addon.xml
@@ -412,7 +411,6 @@ post_makeinstall_target() {
   ADDON_MANIFEST=$INSTALL/usr/share/kodi/system/addon-manifest.xml
   xmlstarlet ed -L -d "/addons/addon[text()='service.xbmc.versioncheck']" $ADDON_MANIFEST
   xmlstarlet ed -L -d "/addons/addon[text()='skin.estouchy']" $ADDON_MANIFEST
-  xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "repository.kodi.game" $ADDON_MANIFEST
   xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "$ADDON_REPO_ID" $ADDON_MANIFEST
   if [ -n "$DISTRO_PKG_SETTINGS" ]; then
     xmlstarlet ed -L --subnode "/addons" -t elem -n "addon" -v "$DISTRO_PKG_SETTINGS_ID" $ADDON_MANIFEST
