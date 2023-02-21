@@ -10,6 +10,7 @@ PKG_URL="$PKG_SITE.git"
 PKG_DEPENDS_TARGET="toolchain Python3:host Python3 distutilscross:host"
 PKG_LONGDESC="Userspace evdev events"
 PKG_TOOLCHAIN="manual"
+PKG_GIT_CLONE_BRANCH="main"
 
 pre_make_target() {
   export PYTHONXCPREFIX="${SYSROOT_PREFIX}/usr"
