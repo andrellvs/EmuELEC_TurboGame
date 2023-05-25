@@ -1,6 +1,78 @@
-EmuELEC CHANGELOG
-==================
+EmuELEC GAMER NINJABROTHERS 4.7
+===============+===
 
+# v4.7 - Removidos emuladores inuteis , Ports inúteis e partes não necessárias. Correção feita no PPSSPP.
+
+CORREÇÕES ABAIXO:
+
+ - Mudar a versão do EmuELEC no menu inicial:
+https://github.com/andrellvs/EmuELEC_NinjaBrothers/edit/master_REBORN/packages/sx05re/emuelec/config/EE_VERSION
+
+- Adicionar temas aqui:(adicionados: es-theme-Chicuelo / es-theme-EmuELEC-carbon/ )
+https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/dev/packages/sx05re/emuelec-emulationstation/package.mk
+https://github.com/andrellvs/EmuELEC_NinjaBrothers/tree/dev/packages/sx05re/emuelec-emulationstation/themes
+
+- PPSSPP: Arquivo "max-fps-setting.patch" exlcuído por impedir a compilação do emulador.
+- RTL8821CU/package.mk - Atualizada a PKG_VERSION para : PKG_VERSION="e49409f22ceea0d5b5ef431e6170580028b84c9d"
+- POPPLER/package.mk - Copiado o MK da BRANCH DEV.4.6 que é atualizada e diferente.
+- 
+
+TRADUÇÃO FEITA AQUI: 
+https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master_REBORN/packages/sx05re/emuelec/config/emuelec/configs/emuelec.conf
+ - Por default: system.language=pt_BR
+ 
+- MEDIA PLAYER DE MP3 AQUI:
+https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master/packages/sx05re/emulationstation-addon/config/scripts/bgm.sh
+https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master/packages/sx05re/emulationstation-addon/config/es_settings.cfg  <<<--->>> <bool name="BGM" value="false" />
+
+ EXTRAS:
+https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master_REBORN/packages/sx05re/emuelec/config/emuelec/configs/emuelec.conf
+ - ee_bootvideo.enabled=1
+ - ee_randombootvideo.enabled=1
+ - ee_splash.enabled=1
+ - ee_splash.delay=3
+ - system.timezone=America/Sao_Paulo
+ - updates.enabled=0
+ - global.ratio=16/9
+ - global.runahead=1
+ - global.secondinstance=1
+ - global.smooth=1
+ - global.shaderset=scanlines 
+ 
+ REMOVIDAS SUB-ISOS COMPILADAS DESNECESSARIMENTE:
+ https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master_REBORN/projects/Amlogic-ce/devices/Amlogic-ng/options
+ Mantem apenas isso : SUBDEVICES="Odroid_N2"
+
+----------------------------------------------------------------------------------------------------------------
+ REMOVIDOS ABAIXO: 
+ 
+ - Removidos EMULADORES-NAO-LIBRETRO de EMUELEC-ADDON.SH (INÚTEIS & ANTIQUADOS):
+ https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master_REBORN/emuelec-addon.sh
+ - es-theme-ComicBook advancemame reicastsa amiberry hatarisa mupen64plus-nx dinothawr lutro mrboom easyrpg openlara pocketcdg
+ ----------------------------
+ - Removidos LBRETRO-CORES de EMUELEC-OPTIONS : 
+ https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master_REBORN/distributions/EmuELEC/options
+
+- VERSÃO FULL EXCLUÍDOS: cannonball(outrun engine) easyrpg(EasyRPG/Player) dinothawr(puzzle) mrboom(Bomberman) pocketcdg(Karaoke) pokemini(Obscure nintendo handheld emulator)
+prboom(prboom for Kodi) reminiscence(Flashback) xrick(Game Engine) gme(Game_Music_Emu) nxengine(Cave Story)  dosbox-svn tic-80(fantasy computer) tyrquake(Quake 1)
+uzem(ATMega644) fake_08(Pico-8) 2048(puzzle)    
+
+- VERSÃO SLIM EXCLUÍDOS:vice px68k fceumm-mod gearcoleco freeintv cannonball easyrpg dinothawr mrboom pocketcdg pokemini prboom reminiscence xrick gme nxengine daphne dosbox-svn
+tic-80 tyrquake uzem fake_08 2048 uae4arm meowpc98 cap32 scummvm puae vecx o2em
+chailove lutro crocods 
+----------------------------   
+ - Removidos PORTS  de EMUELEC-PORTS: 
+ https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master_REBORN/packages/sx05re/emuelec-ports/package.mk
+ - REMOVIDOS VERSÃO FULL/SLIM BUGADOS: supertux(compilador quebrado)
+ 
+ - MANTIDOS NA VERSÃO FULL: commander-genius devilutionX sdlpop VVVVVV opentyrian bermuda hodesdl hydracastlelabyrinth eduke rigelengine sonic2013
+   soniccd  supertuxkart chocolate-doom lzdoom supermariowar bstone hurrican cdogs-sdl abuse fheroes2
+   
+  - PROBLEMÁTICOS, mas foram corrigidos e não foram removidos de EMUELEC-TOOLS: 
+ https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master_REBORN/packages/sx05re/tools/emuelec-tools/package.mk
+  - poppler Skyscraper  
+   
+ ----------------------------------------------------------------------------------------------------------------
 # v4.6
 
 ## Please read the complete change-log before updating. A lot of the changes have been done to the base system. specially to the way the partitions are handled so you might need/want to do a clean install.
