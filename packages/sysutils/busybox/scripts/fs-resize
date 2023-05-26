@@ -13,8 +13,8 @@ if [ -e /storage/.please_resize_me ] ; then
   if [ -d /storage/.kodi -o -d /storage/.config -o -d /storage/.cache ] ; then
     rm -f /storage/.please_resize_me
     sync
-    echo "Resizing is not permitted - the system has already been initialised."
-    StartProgress countdown "Rebooting in 15s... " 15 "NOW"
+    echo "O redimensionamento não é permitido - o sistema já foi inicializado."
+    StartProgress countdown "Reiniciando em 15s... " 15 "NOW"
     reboot -f
   fi
 
@@ -52,15 +52,17 @@ if [ -e /storage/.please_resize_me ] ; then
       STORAGE_END='100%'
     else
       # The bare minumum a EmuELEC image itself needs is 2186280960, but after adding in user configs things become uncontrollable, so we don't care about disks with size between 2085MiB and 3GiB
-      echo 'ERROR: You disk is too small! You need to use a USB drive/SD card that is at least 4GB!'
-      echo 'ERROR: You should NOT try to boot up this drive as it is NOT properly resized!'
+      echo 'ERROR: Seu disco é muito pequeno! Você precisa usar uma unidade USB/cartão SD com pelo menos 4 GB!'
+      echo 'ERROR: Você NÃO deve tentar inicializar esta unidade, pois ela NÃO foi redimensionada corretamente!'
       StartProgress countdown "Powering off in 30s...     " 30 "NOW"
       poweroff
     fi
 
-    echo "PARTITION RESIZING IN PROGRESS"
+    echo "PARTICIONAMENTO EM ANDAMENTO"
     echo ""
-    echo "Please do not reboot or turn off your @DISTRONAME@ device!"
+    echo "REALOCANDO ESPACO E PROGRAMANDO O VIDEO GAME"
+    echo ""
+    echo "Por favor NAO reinicie seu NINJABROTHERS RETROBOX!"
     echo ""
 
     # identify the partition scheme, and if gpt fix minor issues such as gpt header not at end of disk
@@ -105,34 +107,34 @@ if [ -e /storage/.please_resize_me ] ; then
       fi
     fi
 
-    StartProgress spinner "Resizing partition...   " "parted -s -a optimal -m $DISK resizepart 2 $STORAGE_END &>/dev/null"
-    StartProgress spinner "Checking file system... " "e2fsck -f -p $PART &>/dev/null"
-    StartProgress spinner "Resizing file system... " "resize2fs $PART &>/dev/null"
+    StartProgress spinner "Aumentando particao...   " "parted -s -a optimal -m $DISK resizepart 2 $STORAGE_END &>/dev/null"
+    StartProgress spinner "Checando agora........ " "e2fsck -f -p $PART &>/dev/null"
+    StartProgress spinner "Aumentando agora...... " "resize2fs $PART &>/dev/null"
     if [ "$ROMS_CREATE" ]; then
-      StartProgress spinner "Creating EEROMS partition..." "parted -s -a optimal -m $DISK mkpart primary ${PARTED_FS_TYPE} ${STORAGE_END} 100% &>/dev/null"
+      StartProgress spinner "Criando EEROMS particao..." "parted -s -a optimal -m $DISK mkpart primary ${PARTED_FS_TYPE} ${STORAGE_END} 100% &>/dev/null"
       partprobe &>/dev/null
       case $ROM_FS_TYPE in 
         "ntfs")
-        StartProgress spinner "Formatting EEROMS partition as NTFS..." "mkfs.ntfs -L EEROMS -f ${ROMS_PART_NAME} &>/dev/null"
+        StartProgress spinner "Formantando EEROMS particao em NTFS..." "mkfs.ntfs -L EEROMS -f ${ROMS_PART_NAME} &>/dev/null"
         ;;
         "ext4")
-        StartProgress spinner "Formatting EEROMS partition as EXT4..." "mkfs.ext4 -L EEROMS -t ext4 -O 64bit ${ROMS_PART_NAME} &>/dev/null"
+        StartProgress spinner "Formantando EEROMS particao em EXT4..." "mkfs.ext4 -L EEROMS -t ext4 -O 64bit ${ROMS_PART_NAME} &>/dev/null"
         ;;
         "exfat")
-        StartProgress spinner "Formatting EEROMS partition as EXFAT..." "mkfs.exfat -n EEROMS ${ROMS_PART_NAME} &>/dev/null"
+        StartProgress spinner "Formantando EEROMS particao em EXFAT..." "mkfs.exfat -n EEROMS ${ROMS_PART_NAME} &>/dev/null"
         ;;
         *)
-        StartProgress spinner "Formatting EEROMS partition as FAT32..." "mkfs.vfat -n EEROMS ${ROMS_PART_NAME} &>/dev/null"
+        StartProgress spinner "Formantando EEROMS particao em FAT32..." "mkfs.vfat -n EEROMS ${ROMS_PART_NAME} &>/dev/null"
         ;;
       esac   
     elif [ "$ROMS_OMIT_MANUAL" ]; then
-      echo 'WARNING: EEROMS partition is omitted manually even your drive size is >=8GB, YOU KNOW WHAT YOU ARE DOING'
+      echo 'ATENCAO!: EEROMS a partição é omitida manualmente, mesmo que o tamanho da sua unidade seja> = 8 GB, VOCE SABE O QUE ESTA FAZENDO'
       mount -o rw,remount /flash
       rm -f /flash/ee_fstype # Mark should be cleaned since the 'no' fstype has no use afterwards
     else
-      echo 'WARNING: EEROMS partition is omitted for <8GB drives'
+      echo 'ATENCAO!: EEROMS a partição é omitida para unidades <8 GB'
     fi
-    StartProgress countdown "Rebooting in 5s...     " 5 "NOW"
+    StartProgress countdown "Reiniciando em 5 segundos...     " 5 "NOW"
   fi
 fi
 reboot -f &>/dev/null
