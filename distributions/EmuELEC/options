@@ -1,4 +1,4 @@
-### DISTRO INFORMATION ###
+#### DISTRO INFORMATION ###
 
 # Name of the Distro to build (full name, without special characters)
   DISTRONAME="EmuELEC"
@@ -11,8 +11,8 @@
 
 # Welcome Message for e.g. SSH Server (up to 5 Lines)
   GREETING0="##############################################"
-  GREETING1="#                 EmuELEC                    #"
-  GREETING2="#     Retro emulation for Amlogic Devices    #"
+  GREETING1="#      NEOEmuELEC - GamerNinjaBrothers       #"
+  GREETING2="#           TURBO GAME NEVER DIES!           #"
   GREETING3="#             Based on CoreELEC              #"
   GREETING4="##############################################"
 
@@ -32,21 +32,12 @@
 # GOLD (Google Linker) support
   GOLD_SUPPORT="yes"
 
-# MOLD (Modern Linker) support
-  MOLD_SUPPORT="no"
-
-# default linker (bfd / gold / mold)
-  DEFAULT_LINKER="gold"
-
 # HARDENING (security relevant linker and compiler flags) support
   HARDENING_SUPPORT="no"
 
 # Default supported get handlers (archive, git, file etc.)
   GET_HANDLER_SUPPORT="archive git file"
 
-# use local ccache on build host, if available, for early package
-# builds before ccache has been built
-  LOCAL_CCACHE_SUPPORT="yes"
 
 ### OS CONFIGURATION ###
 
@@ -57,8 +48,7 @@
 # for a list of additional drivers see packages/linux-drivers
 # Space separated list is supported,
 # e.g. ADDITIONAL_DRIVERS="DRIVER1 DRIVER2"
-  ADDITIONAL_DRIVERS="gpu-aml openvfd-driver media_modules-aml wifi_dummy-aml ap6xxx-aml
-                     uwe5631-aml RTL8822CS-aml RTL8852BS-aml w1-aml"
+  ADDITIONAL_DRIVERS="RTL8192CU RTL8192DU RTL8192EU RTL8188EU RTL8812AU RTL8821CU"
 
 # Default size of system partition, in MB, eg. 512
   SYSTEM_SIZE=2048
@@ -96,12 +86,6 @@
 
 # build and install PulseAudio support (yes / no)
   PULSEAUDIO_SUPPORT="yes"
-
-# build and install pipewire support (yes / no)
-  PIPEWIRE_SUPPORT="no"
-
-# build and install eSpeak-NG support (yes / no)
-  ESPEAK_SUPPORT="no"
 
 # build and install with BluRay support (yes / no)
   KODI_BLURAY_SUPPORT="yes"
@@ -148,14 +132,6 @@
 # build with Samba Client support (mounting SAMBA shares with KODI) (yes / no)
   KODI_SAMBA_SUPPORT="yes"
 
-# build kodi with alsa support (yes/no)
-  KODI_ALSA_SUPPORT="yes"
-
-# build kodi with pulseaudio support (yes/no)
-  KODI_PULSEAUDIO_SUPPORT="yes"
-
-# build kodi with pipewire support (yes/no)
-  KODI_PIPEWIRE_SUPPORT="no"
 
 ### KODI ADDONS ###
 
@@ -173,7 +149,7 @@
   ADDON_REPO_NAME="CoreELEC Add-ons"
 
 # set the addon dirs
-  ADDON_PATH="$DEVICE/$ADDON_VERSION/$TARGET_ARCH"
+  ADDON_PATH="$ADDON_VERSION/$PROJECT/$TARGET_ARCH"
 
 # Settings package name - blank if not required
   DISTRO_PKG_SETTINGS=""
@@ -194,7 +170,7 @@
   WIRELESS_DAEMON="wpa_supplicant"
 
 # build and install iSCSI support - iscsistart (yes / no)
-  ISCSI_SUPPORT="no"
+  ISCSI_SUPPORT="yes"
 
 # build with NFS support (mounting nfs shares via the OS) (yes / no)
   NFS_SUPPORT="yes"
@@ -241,11 +217,22 @@
 # build with installer (yes / no)
   INSTALLER_SUPPORT="yes"
 
+# Windowmanager to use (fluxbox / none)
+  WINDOWMANAGER="fluxbox"
+
+# Xorg Graphic drivers to use (all / i915,i965,r200,r300,r600,nvidia)
+# Space separated list is supported,
+# e.g. GRAPHIC_DRIVERS="i915 i965 r300 r600 radeonsi nvidia"
+  GRAPHIC_DRIVERS="r300 r600 radeonsi iris i915 i965 nvidia nvidia-legacy vmware virtio"
+
 # build and install remote support (yes / no)
   REMOTE_SUPPORT="yes"
 
+# IR remote protocols supported in default config
+  IR_REMOTE_PROTOCOLS="RC6 NEC"
+
 # IR remote keymaps supported in default config
-  IR_REMOTE_KEYMAPS="rc6_mce xbox_360 xbox_one odroid wetek_hub wetek_play_2 tanix"
+  IR_REMOTE_KEYMAPS="rc6_mce xbox_360 xbox_one"
 
 # build and install Joystick support (yes / no)
   JOYSTICK_SUPPORT="yes"
@@ -259,18 +246,43 @@
 # OEM packages for OEM's (yes / no)
   OEM_SUPPORT="no"
 
-# build and install ALSA Audio support (yes / no)
-  ALSA_SUPPORT="yes"
-
 # additional packages to install:
 # Space separated list is supported,
 # e.g. ADDITIONAL_PACKAGES="PACKAGE1 PACKAGE2"
-  ADDITIONAL_PACKAGES="u-boot-script dtc CoreELEC-Debug-Scripts inject_bl301
-                       nfs-utils dtb-xml megatools"
+  ADDITIONAL_PACKAGES=""
+
+# MOLD (Modern Linker) support
+  MOLD_SUPPORT="no"
+
+# default linker (bfd / gold)
+  DEFAULT_LINKER="gold"
 
 # start SX05RE added options
+LAKKA_MIRROR="http://sources.lakka.tv"
 
-LIBRETRO_CORES="2048 \
+# Excluidos:   cannonball(outrun engine) easyrpg(EasyRPG/Player) dinothawr(puzzle) mrboom(Bomberman) pocketcdg(Karaoke) pokemini(Obscure nintendo handheld emulator)
+# prboom(prboom for Kodi) reminiscence(Flashback) xrick(Game Engine) gme(Game_Music_Emu) nxengine(Cave Story)  dosbox-svn tic-80(fantasy computer) tyrquake(Quake 1)
+# uzem(ATMega644) fake_08(Pico-8) 2048(puzzle) 
+
+LIBRETRO_CORES="ppsspp \
+tyrquake \
+reminiscence \
+cannonball \
+mrboom \
+prboom \
+o2em \
+vecx \
+puae \
+scummvm \
+cap32 \
+meowpc98 \
+uae4arm \
+daphne \
+freeintv \
+gearcoleco \
+fceumm-mod \
+px68k \
+vice \
 81 \
 a5200 \
 atari800 \
@@ -282,55 +294,32 @@ beetle-supergrafx \
 beetle-vb \
 beetle-wswan \
 bluemsx \
-cannonball \
-cap32 \
-daphne \
-dinothawr \
-dosbox-svn \
-easyrpg \
-fake_08 \
 fbalpha2012 \
 fbneo \
 fceumm \
-fceumm-mod \
 flycast \
-freeintv \
 fuse-libretro \
 gambatte \
 gearboy \
-gearcoleco \
 gearsystem \
 genesis-plus-gx \
 genesis-plus-gx-wide \
-gme \
 gpsp \
 gw-libretro \
 handy \
 hatari \
 mame2003-plus \
 mame2010 \
-meowpc98 \
 mgba \
-mrboom \
 mupen64plus \
 neocd_libretro \
 nestopia \
-nxengine \
-o2em \
 opera \
 parallel-n64 \
 pcsx_rearmed \
 picodrive \
-pocketcdg \
-pokemini \
-ppsspp \
-prboom \
 prosystem \
-puae \
-px68k \
-reminiscence \
 sameboy \
-scummvm \
 snes9x \
 snes9x2002 \
 snes9x2005_plus \
@@ -338,29 +327,20 @@ snes9x2010 \
 spring \
 stella \
 tgbdual \
-tic-80 \
-tyrquake \
-xrick \
-uae4arm \
-uzem \
 vba-next \
-vbam \
-vecx \
-vice"
+vbam"
 
-LIBRETRO_EXTRA_CORES="chailove \
-crocods \
-desmume \
+# Excluidos: chailove lutro crocods 
+LIBRETRO_EXTRA_CORES="desmume \
 desmume-2015 \
-lutro \
 melonds \
 snes9x2005 \
-yabause"
+yabause \
+virtualjaguar"
 
 LIBRETRO_S922X_CORES="mesen \
 mesen-s \
-quicknes \
-virtualjaguar"
+quicknes"
 
   RA_PLAYLIST_NAMES=""\
 "Atari - 2600.lpl;"\
