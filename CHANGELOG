@@ -3,6 +3,9 @@ NEO EmuELEC 4.7
 
 # v4.7 - Removidos emuladores inuteis , Ports inúteis e partes não necessárias. Correção feita no PPSSPP.
 
+- SPLASH IMAGE - MODELO NOVO PARA ESTUDAR COMO INSERIR NO SISTEMA
+https://github.com/andrellvs/Neo_EmuELEC/blob/2-dev-v.4.6-.S905.X3.X4-SLIM/packages/tools/splash-image/package.mk
+
 CORREÇÕES ABAIXO:
 
  - Tradução do PACKAGE BUMP.SH - APLICATIVO DE ATUALIZAÇÃO AUTOMATICA
