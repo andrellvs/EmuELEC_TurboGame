@@ -5,7 +5,7 @@ Para tirar suas dúvidas, pergunte no LibreELEC [Fórum], no IRC:
 
 Não abra um problema.
 
-### Relatórios de Problemas
+#### Relatórios de Problemas
 
 ** ANTES de relatar um bug, certifique-se de obter a versão de teste mais recente do
 LivreELEC. Seu bug pode já estar corrigido.**
