@@ -15,7 +15,7 @@ PROJECT="$1"
 # make sure you change these lines to point to your EmuELEC git clone
 EMUELEC="${SCRIPT_DIR}"
 #[ -z "$GIT_BRANCH" ] && GIT_BRANCH="master"
-[ -z "$GIT_BRANCH" ] && GIT_BRANCH="2-dev-4.6-S9X3.X4-SLIM"
+[ -z "$GIT_BRANCH" ] && GIT_BRANCH="5-master+splash-4.6-S9X3.X4-FULL"
 SX05RE_PATH="packages/sx05re"
 EMUELEC_PATH="${SX05RE_PATH}/emuelec"
 [ -z "$EMUELEC_ADDON_VERSION" ] && EMUELEC_ADDON_VERSION="3.7"
