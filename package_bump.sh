@@ -14,13 +14,13 @@ usage()
   echo ""
   echo "$0 <--all [--exclude list] | --used [--exclude list] | --packages list>"
   echo ""
-  echo "Updates PKG_VERSION in package.mk of libretro packages to latest."
+  echo "Atualiza PKG_VERSION em package.mk dos pacotes libretro para o mais recente."
   echo ""
-  echo "Parameters:"
-  echo " -a --all                 Update all libretro packages"
-  echo " -u --used                Update only libretro packages used by Lakka"
-  echo " -p list --packages list  Update listed libretro packages"
-  echo " -e list --exclude list   Update all/used packages except listed ones"
+  echo "Parâmetros:"
+  echo " -a --all                  Atualiza todos os pacotes libretro"
+  echo " -u --used                Atualize apenas pacotes libretro usados por Lakka"
+  echo " -p list --packages list  Atualizar pacotes libretro listados"
+  echo " -e list --exclude list   Atualize todos os pacotes usados, exceto os listados"
   echo ""
 }
 
@@ -42,18 +42,18 @@ case $1 in
             if [ -f $(find $LR_PKG_PATH -wholename */$a/package.mk) ] ; then
               PACKAGES_EX="$PACKAGES_EX $a"
             else
-              echo "Warning: $a is not a libretro package."
+              echo "Aviso: $a não é um pacote libretro."
             fi
           done
-          [ "$PACKAGES_EX" == "" ] && { echo "No valid packages to exclude given! Aborting." ; exit 1 ; }
+          [ "$PACKAGES_EX" == "" ] && { echo "Nenhum pacote válido para excluir dado! Abortando." ; exit 1 ; }
           ;;
         * )
-          echo "Error: After $s use only --exclude (-e) to exclude some packages."
+          echo "Erro: Depois  $s use apenas --exclude (-e) para excluir alguns pacotes."
           exit 1
           ;;
       esac
     fi
-    # Get list of all libretro packages
+    # Obter lista de todos os pacotes libretro
     PACKAGES_ALL=`ls $LR_PKG_PATH`
     ;;
   -u | --used )
@@ -66,26 +66,26 @@ case $1 in
           x="$1"
           shift
           v="$@"
-          [ "$v" == "" ] && { echo "Error: You must provide name(s) of package(s) to exclude after $x" ; exit 1 ; }
+          [ "$v" == "" ] && { echo "Erro: Você deve fornecer o(s) nome(s) do(s) pacote(s) a excluir após $x" ; exit 1 ; }
           for a in $v ; do
             if [ -f $(find $LR_PKG_PATH -wholename */$a/package.mk) ] ; then
               PACKAGES_EX="$PACKAGES_EX $a"
             else
-              echo "Warning: $a is not a libretro package."
+              echo "Aviso: $a não é um pacote libretro."
             fi
           done
-          [ "$PACKAGES_EX" == "" ] && { echo "No valid packages to exclude given! Aborting." ; exit 1 ; }
+          [ "$PACKAGES_EX" == "" ] && { echo "Nenhum pacote válido para excluir fornecido! Abortando." ; exit 1 ; }
           ;;
         * )
-          echo "Error: After $s use only --exclude (-e) to exclude some packages."
+          echo "Erro: Depois de $s use apenas --exclude (-e) para excluir alguns pacotes."
           exit 1
           ;;
       esac
     fi
-    # Get list of cores, which are used with Lakka:
+    # Obtenha a lista de núcleos usados com o Lakka:
     OPTIONS_FILE="distributions/Sx05RE/options"
     [ -f "$OPTIONS_FILE" ] && source "$OPTIONS_FILE" || { echo "$OPTIONS_FILE: not found! Aborting." ; exit 1 ; }
-    [ -z "$LIBRETRO_CORES" ] && { echo "LIBRETRO_CORES: empty. Aborting!" ; exit 1 ; }
+    [ -z "$LIBRETRO_CORES" ] && { echo "LIBRETRO_CORES: vazio. Abortando!" ; exit 1 ; }
     # List of core retroarch packages
     RA_PACKAGES="retroarch retroarch-assets retroarch-joypad-autoconfig retroarch-overlays libretro-database core-info glsl-shaders"
     # List of all libretro packages to update:
@@ -96,19 +96,19 @@ case $1 in
     x="$1"
     shift
     v="$@"
-    [ "$v" == "" ] && { echo "Error: You must provide name(s) of package(s) after $x" ; exit 1 ; }
+    [ "$v" == "" ] && { echo "Erro: Você deve fornecer o(s) nome(s) do(s) pacote(s) após $x" ; exit 1 ; }
     for a in $v ; do
       if [ -f $(find $LR_PKG_PATH -wholename */$a/package.mk) ] ; then
         PACKAGES_ALL="$PACKAGES_ALL $a "
       else
-        echo "Warning: $a is not a libretro package - skipping."
+        echo "Aviso: $a não é um pacote libretro - pulando."
       fi
     done
-    [ "$PACKAGES_ALL" == "" ] && { echo "No valid packages given! Aborting." ; exit 1 ; }
+    [ "$PACKAGES_ALL" == "" ] && { echo "Nenhum pacote válido fornecido! Abortando." ; exit 1 ; }
     ;;
   * )
     usage
-    echo "Unknown parameter: $1"
+    echo "Parâmetro desconhecido: $1"
     exit 1
     ;;
 esac
@@ -117,26 +117,26 @@ if [ "$PACKAGES_EX" != "" ] ; then
     PACKAGES_ALL=$(echo " "$PACKAGES_ALL" " | sed "s/\ $a\ /\ /g")
   done
 fi
-echo "Checking following packages: "$PACKAGES_ALL
+echo "Verificando os seguintes pacotes: "$PACKAGES_ALL
 declare -i i=0
 declare -i ii=0
 for p in $PACKAGES_ALL
 do
   f=$(find $LR_PKG_PATH -wholename */$p/package.mk)
   if [ ! -f "$f" ] ; then
-    echo "$f: not found! Skipping."
+    echo "$f: não encontrado! Pular."
     continue
     else
-    echo "working on : $f"
+    echo "wtrabalhando em: $f"
     source config/options "$p"
     source "$f"
   fi
  
   if [ -z "$PKG_VERSION" ] || [ -z "$PKG_SITE" ] ; then
-    echo "$f: does not have PKG_VERSION or PKG_SITE"
+    echo "$f: não tem PKG_VERSION ou PKG_SITE"
     echo "PKG_VERSION: $PKG_VERSION"
     echo "PKG_SITE: $PKG_SITE"
-    echo "Skipping update."
+    echo "Pular atualização."
     continue
   fi
      
@@ -147,12 +147,12 @@ if [ $BUMPS != "no" ]; then
     PKG_SITE_EXT="${PKG_URL: -4}"
  
 	if [[ $PKG_SITE != *"github.com"* ]]; then
-		echo "Package is not hosted in github, skipping"
+		echo "Pacote não está hospedado no github, pulando"
 	continue
 	fi
  
  if [[ $PKG_EE_UPDATE == "no" ]]; then
-		echo "Package is protected, skipping"
+		echo "O pacote está protegido, pulando"
 	continue
 	fi
  
@@ -179,10 +179,10 @@ fi
   if [ "$GET_HANDLER_SUPPORT" != "git" ] && [ "${PKG_SITE_EXT}" != ".git" ]; then 
  
    if grep -q PKG_SHA256 "$f"; then
-    echo "PKG_SHA256 exists on $f, clearing"
+    echo "PKG_SHA256 existe em $f, limpando"
     sed -i "s/PKG_SHA256=\"$PKG_SHA256\"/PKG_SHA256=\"\"/" $f
     else
-    echo "PKG_SHA256 does not exists on $f, creating"
+    echo "PKG_SHA256 não existe em $f, criando"
     sed -i -e "s/PKG_VERSION=\"$UPS_VERSION\(.*\)\"/PKG_VERSION=\"$UPS_VERSION\1\"\nPKG_SHA256=\"\"/g" $f
    fi
 
@@ -203,4 +203,4 @@ fi
  fi
     
  done
-echo "$i package(s) bumped. $ii sha256 updated packages"
+echo "$i pacote(s) atualizado(s). $ii sha256 pacotes atualizados"
