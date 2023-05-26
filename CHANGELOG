@@ -8,6 +8,9 @@ https://github.com/andrellvs/Neo_EmuELEC/blob/2-dev-v.4.6-.S905.X3.X4-SLIM/packa
 
 CORREÇÕES ABAIXO:
 
+ - Remover os PORTS DO ES_SYSTEMS.CFG
+ https://github.com/andrellvs/Neo_EmuELEC/blob/2-dev-v.4.6-.S905.X3.X4-SLIM/packages/sx05re/emuelec-emulationstation/config/es_systems.cfg
+ 
  - Tradução do PACKAGE BUMP.SH - APLICATIVO DE ATUALIZAÇÃO AUTOMATICA
  https://github.com/andrellvs/Neo_EmuELEC/blob/2-dev-v.4.6-.S905.X3.X4-SLIM/package_bump.sh
 
