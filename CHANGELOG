@@ -16,15 +16,13 @@ https://github.com/andrellvs/EmuELEC_NinjaBrothers/tree/dev/packages/sx05re/emue
 - RTL8821CU/package.mk - Atualizada a PKG_VERSION para : PKG_VERSION="e49409f22ceea0d5b5ef431e6170580028b84c9d"
 - POPPLER/package.mk - Copiado o MK da BRANCH DEV.4.6 que é atualizada e diferente.
 - 
-
-TRADUÇÃO FEITA AQUI: 
-https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master_REBORN/packages/sx05re/emuelec/config/emuelec/configs/emuelec.conf
- - Por default: system.language=pt_BR
- 
 - MEDIA PLAYER DE MP3 AQUI:
 https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master/packages/sx05re/emulationstation-addon/config/scripts/bgm.sh
 https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master/packages/sx05re/emulationstation-addon/config/es_settings.cfg  <<<--->>> <bool name="BGM" value="false" />
 
+TRADUÇÃO FEITA AQUI: 
+https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master_REBORN/packages/sx05re/emuelec/config/emuelec/configs/emuelec.conf
+ - Por default: system.language=pt_BR
  EXTRAS:
 https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master_REBORN/packages/sx05re/emuelec/config/emuelec/configs/emuelec.conf
  - ee_bootvideo.enabled=1
