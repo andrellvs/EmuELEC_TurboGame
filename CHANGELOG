@@ -71,7 +71,9 @@ chailove lutro crocods
   - PROBLEMÁTICOS, mas foram corrigidos e não foram removidos de EMUELEC-TOOLS: 
  https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master_REBORN/packages/sx05re/tools/emuelec-tools/package.mk
   - poppler Skyscraper  
-   
+  
+  
+ https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master_REBORN/packages/sx05re/emuelec/package.mk 
  ----------------------------------------------------------------------------------------------------------------
 # v4.6
 
