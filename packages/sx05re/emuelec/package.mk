@@ -17,8 +17,11 @@ PKG_AUTORECONF="no"
 PKG_TOOLCHAIN="make"
 PKG_NEED_UNPACK="$(get_pkg_directory busybox) $(get_pkg_directory wget) $(get_pkg_directory coreutils)"
 
+#ABAIXO DEFINE QUE PKG_EMUS É TAMBEM AGORA $LIBRETRO_CORES
 PKG_EMUS="$LIBRETRO_CORES"
+#ABAIXO DEFINE PKG_TOOLS É TODAS AS EMUELEC-TOOLS
 PKG_TOOLS="emuelec-tools"
+#ABAIXO DEFINE SÓ COMPILA JUNTO AO PKG TOOLS E PKG EMUS JUNTOS.
 PKG_DEPENDS_TARGET+=" $PKG_TOOLS $PKG_EMUS "
 
 # Removed cores for space and/or performance
