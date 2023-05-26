@@ -1,7 +1,7 @@
 #### DISTRO INFORMATION ###
 
 # Name of the Distro to build (full name, without special characters)
-  DISTRONAME="EmuELEC"
+  DISTRONAME="NeoEmuELEC"
 
 # short project description
   DESCRIPTION="Retro emulation for Amlogic Devices."
@@ -11,8 +11,8 @@
 
 # Welcome Message for e.g. SSH Server (up to 5 Lines)
   GREETING0="##############################################"
-  GREETING1="#      NEOEmuELEC - GamerNinjaBrothers       #"
-  GREETING2="#           TURBO GAME NEVER DIES!           #"
+  GREETING1="#      NeoEmuELEC - GamerNinjaBrothers       #"
+  GREETING2="#            TURBO GAME FOREVER!             #"
   GREETING3="#             Based on CoreELEC              #"
   GREETING4="##############################################"
 
@@ -60,7 +60,7 @@
   SWAP_SUPPORT="yes"
 
 # swap support enabled per default (yes / no)
-  SWAP_ENABLED_DEFAULT="no"
+  SWAP_ENABLED_DEFAULT="yes"
 
 # swapfile size if SWAP_SUPPORT=yes in MB
   SWAPFILESIZE="128"
@@ -88,25 +88,25 @@
   PULSEAUDIO_SUPPORT="yes"
 
 # build and install with BluRay support (yes / no)
-  KODI_BLURAY_SUPPORT="yes"
+  KODI_BLURAY_SUPPORT="NO"
 
 # build and install with BD+ support
 # (BD+ decryption support in KODI) (yes / no)
-  BLURAY_BDPLUS_SUPPORT="yes"
+  BLURAY_BDPLUS_SUPPORT="NO"
 
 # build and install with AACS support
 # (BD decryption support in KODI) (yes / no)
-  BLURAY_AACS_SUPPORT="yes"
+  BLURAY_AACS_SUPPORT="no"
 
 # build and install with DVDCSS support
 # (DVD decryption support in KODI) (yes / no)
-  KODI_DVDCSS_SUPPORT="yes"
+  KODI_DVDCSS_SUPPORT="no"
 
 # build and install bluetooth support (yes / no)
   BLUETOOTH_SUPPORT="yes"
 
 # build and install with KODI webfrontend (yes / no)
-  KODI_WEBSERVER_SUPPORT="yes"
+  KODI_WEBSERVER_SUPPORT="no"
 
 # build and install Avahi (Zeroconf) daemon (yes / no)
   AVAHI_DAEMON="yes"
@@ -121,10 +121,10 @@
   KODI_OPTICAL_SUPPORT="yes"
 
 # build with AirPlay support (stream videos from iDevices to KODI) (yes / no)
-  KODI_AIRPLAY_SUPPORT="yes"
+  KODI_AIRPLAY_SUPPORT="no"
 
 # build with AirTunes support (stream music from iDevices to KODI) (yes / no)
-  KODI_AIRTUNES_SUPPORT="yes"
+  KODI_AIRTUNES_SUPPORT="no"
 
 # build with libnfs support (mounting nfs shares with KODI) (yes / no)
   KODI_NFS_SUPPORT="yes"
@@ -218,7 +218,7 @@
   INSTALLER_SUPPORT="yes"
 
 # Windowmanager to use (fluxbox / none)
-  WINDOWMANAGER="fluxbox"
+  WINDOWMANAGER="none"
 
 # Xorg Graphic drivers to use (all / i915,i965,r200,r300,r600,nvidia)
 # Space separated list is supported,
@@ -262,14 +262,9 @@ LAKKA_MIRROR="http://sources.lakka.tv"
 
 # Excluidos:   cannonball(outrun engine) easyrpg(EasyRPG/Player) dinothawr(puzzle) mrboom(Bomberman) pocketcdg(Karaoke) pokemini(Obscure nintendo handheld emulator)
 # prboom(prboom for Kodi) reminiscence(Flashback) xrick(Game Engine) gme(Game_Music_Emu) nxengine(Cave Story)  dosbox-svn tic-80(fantasy computer) tyrquake(Quake 1)
-# uzem(ATMega644) fake_08(Pico-8) 2048(puzzle) 
+# uzem(ATMega644) fake_08(Pico-8) 2048(puzzle) tyrquake reminiscence cannonball mrboom prboom 
 
 LIBRETRO_CORES="ppsspp \
-tyrquake \
-reminiscence \
-cannonball \
-mrboom \
-prboom \
 o2em \
 vecx \
 puae \
@@ -338,9 +333,9 @@ snes9x2005 \
 yabause \
 virtualjaguar"
 
-LIBRETRO_S922X_CORES="mesen \
-mesen-s \
-quicknes"
+#LIBRETRO_S922X_CORES="mesen \
+#mesen-s \
+#quicknes"
 
   RA_PLAYLIST_NAMES=""\
 "Atari - 2600.lpl;"\
