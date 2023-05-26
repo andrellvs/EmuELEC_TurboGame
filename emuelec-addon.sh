@@ -97,7 +97,7 @@ PACKAGES_Sx05RE="$PKG_EMUS \
 
 PACKAGES_ALL="$LIBRETRO_CORES"
 #Removidos: dinothawr lutro mrboom easyrpg openlara pocketcdg
-#LIBRETRO_EXTRA_CORES="citra beetle-psx beetle-saturn beetle-bsnes bsnes-mercury bsnes higan-sfc-balanced higan-sfc  mame2003-midway dolphin virtualjaguar"
+LIBRETRO_EXTRA_CORES="citra beetle-psx beetle-saturn beetle-bsnes bsnes-mercury bsnes higan-sfc-balanced higan-sfc  mame2003-midway dolphin virtualjaguar"
 
 PACKAGES_ALL="$LIBRETRO_BASE $PACKAGES_ALL $PACKAGES_Sx05RE" 
 DISABLED_CORES="libretro-database $LIBRETRO_EXTRA_CORES"
