@@ -1,109 +1,109 @@
-### Questions about LibreELEC?
+### Dúvidas sobre o LibreELEC?
 
-To get your questions answered, please ask in the LibreELEC [Forum], on IRC: 
-\#libreelec on Libera.Chat. 
+Para tirar suas dúvidas, pergunte no LibreELEC [Fórum], no IRC:
+\#libreelec no Libera.Chat.
 
-Do not open an issue.
+Não abra um problema.
 
-### Issue Reports
+### Relatórios de Problemas
 
-**BEFORE you report a bug make sure you got the latest testing version of 
-LibreELEC. Your bug might be already fixed.**
+** ANTES de relatar um bug, certifique-se de obter a versão de teste mais recente do
+LivreELEC. Seu bug pode já estar corrigido.**
 
-If you are at all unsure whether it's a bug in LibreELEC or a problem with 
-something else, post in the LibreELEC [Forum] instead. If it turns out that it is
-a bug, an issue can always be opened later.
+Se você não tem certeza se é um bug no LibreELEC ou um problema com
+outra coisa, poste no LibreELEC [Fórum]. Se acontecer que é
+um bug, um problema sempre pode ser aberto mais tarde.
 
-If you are sure that it's a bug in LibreELEC and you have not found a [similar issue], open a new [issue]
-and try to answer the following questions:
-- What did you do?
-- What did you expect to happen?
-- What happened instead?
+Se você tem certeza de que é um bug no LibreELEC e não encontrou um [problema semelhante], abra um novo [problema]
+e tente responder às seguintes perguntas:
+- O que você fez?
+- O que você esperava que acontecesse?
+- O que aconteceu em vez disso?
 
-**It is also importent to provide logs for debugging.
-A zip file can be found in the [logfiles] samba share, this will contain all the logs needed.**
+**Também é importante fornecer logs para depuração.
+Um arquivo zip pode ser encontrado no compartilhamento do samba [arquivos de log], ele conterá todos os logs necessários.**
 
-Make sure to specify which version of LibreELEC you are using.
-- LibreELEC version
-- LibreELEC build
-- LibreELEC arch
+Certifique-se de especificar qual versão do LibreELEC você está usando.
+- Versão LibreELEC
+- Construção LibreELEC
+- Arco LibreELEC
 
-Please don't paste log messages in the issue reports or issue comments - use 
-[sprunge.us](http://sprunge.us) instead.
+Por favor, não cole mensagens de log nos relatórios de problemas ou comentários de problemas - use
+[sprunge.us](http://sprunge.us).
 
-Feature requests are great, but they usually end up lying around the issue
-tracker indefinitely. Sending a pull request is a much better way of getting a
-particular feature into LibreELEC.
+As solicitações de recursos são ótimas, mas geralmente acabam contornando o problema
+rastreador por tempo indeterminado. Enviar um pull request é uma maneira muito melhor de obter um
+recurso particular no LibreELEC.
 
-Please dont ask us to add 3rdparty drivers unless you are the maintainer/developer of the driver,
-we have no manpower to support a non-mainlined kernel driver for your hardware.
-However, LibreELEC comes with minimal set of kernel drivers enabled, if you are sure that your hardware
-is supported in mainline kernel, feel free to send us a Pull Request to enable it in our
-kernel defconfigs. We are always happy to support known-working hardware.
+Não nos peça para adicionar drivers de terceiros, a menos que você seja o mantenedor/desenvolvedor do driver,
+não temos mão de obra para oferecer suporte a um driver de kernel não principal para o seu hardware.
+No entanto, o LibreELEC vem com um conjunto mínimo de drivers de kernel ativados, se você tiver certeza de que seu hardware
+é compatível com o kernel principal, sinta-se à vontade para nos enviar um Pull Request para ativá-lo em nosso
+defconfigs do kernel. Estamos sempre felizes em oferecer suporte a hardware de trabalho conhecido.
 
-### Reporting build failures
+### Relatando falhas de compilação
 
-As buildsystem / core packages (toolchain) / random libraries change from time to time, it is required
-that you always do a clean build (make clean) before reporting build failures. Also make sure that you
-have a clean, unmodified git clone, we can't fix bugs caused by you failed to merge / rebase on
-your own fork.
+Como o sistema de compilação/pacotes principais (cadeia de ferramentas)/bibliotecas aleatórias mudam de tempos em tempos, é necessário
+que você sempre faça uma compilação limpa (make clean) antes de relatar falhas de compilação. Certifique-se também de que você
+tenha um git clone limpo e não modificado, não podemos corrigir bugs causados ​​por você falhou ao mesclar / rebase em
+seu próprio garfo.
 
-### Pull Requests
+### Solicitações pull
 
-- **Create topic branches**. Don't ask us to pull from your master branch.
+- **Crie ramificações de tópicos**. Não nos peça para extrair de seu branch master.
 
-- **One pull request per feature**. If you want to do more than one thing, send
-  multiple pull requests.
+- **Uma solicitação pull por recurso**. Se você quiser fazer mais de uma coisa, envie
+   múltiplas solicitações pull.
 
-- **Send coherent history**. Make sure each individual commit in your pull
-  request is meaningful. If you had to make multiple intermediate commits while
-  developing, please squash them before sending them to us.
+- **Enviar histórico coerente**. Certifique-se de que cada indivíduo se comprometa em sua atração
+   pedido é significativo. Se você tivesse que fazer vários commits intermediários enquanto
+   desenvolvimento, esmague-os antes de enviá-los para nós.
 
-Please follow this process; it's the best way to get your work included in the project:
+Siga este processo; é a melhor maneira de incluir seu trabalho no projeto:
 
-- [Fork](http://help.github.com/fork-a-repo/) the project, clone your fork,
-   and configure the remotes:
+- [Fork](http://help.github.com/fork-a-repo/) o projeto, clone seu fork,
+    e configure os controles remotos:
 
 ```bash
-   # clone your fork of the repo into the current directory in terminal
-   git clone git@github.com:<your username>/LibreELEC.tv.git
-   # navigate to the newly cloned directory
-   cd LibreELEC.tv
-   # assign the original repo to a remote called "upstream"
-   git remote add upstream https://github.com/LibreELEC/LibreELEC.tv.git
-   ```
+    # clone sua bifurcação do repositório no diretório atual no terminal
+    git clone git@github.com:<seu nome de usuário>/LibreELEC.tv.git
+    # navegue até o diretório recém-clonado
+    cd LibreELEC.tv
+    # atribui o repositório original a um remoto chamado "upstream"
+    git remote add upstream https://github.com/LibreELEC/LibreELEC.tv.git
+    ```
 
-- If you cloned a while ago, get the latest changes from upstream:
+- Se você clonou há algum tempo, obtenha as últimas alterações do upstream:
 
-   ```bash
-   # fetch upstream changes
-   git fetch upstream
-   # make sure you are on your 'master' branch
-   git checkout master
-   # merge upstream changes
-   git merge upstream/master
-   ```
+    ```bash
+    # busca alterações upstream
+    git buscar upstream
+    # certifique-se de estar em sua ramificação 'mestre'
+    mestre de checkout git
+    # mesclar alterações upstream
+    git merge upstream/mestre
+    ```
 
-- Create a new topic branch to contain your feature, change, or fix:
+- Crie uma nova ramificação de tópico para conter seu recurso, alteração ou correção:
 
-   ```bash
-   git checkout -b <topic-branch-name>
-   ```
+    ```bash
+    git checkout -b <topic-branch-name>
+    ```
 
-- Commit your changes in logical chunks. or your pull request is unlikely
-   be merged into the main project. Use git's
-   [interactive rebase](https://docs.github.com/en/github/getting-started-with-github/about-git-rebase) feature to tidy up your commits before making them public.
+- Confirme suas alterações em blocos lógicos. ou sua solicitação pull é improvável
+    ser mesclado no projeto principal. Use git's
+    Recurso [rebase interativo](https://docs.github.com/en/github/getting-started-with-github/about-git-rebase) para organizar seus commits antes de torná-los públicos.
 
-- Push your topic branch up to your fork:
+- Empurre sua ramificação de tópico até sua bifurcação:
 
-   ```bash
-   git push origin <topic-branch-name>
-   ```
+    ```bash
+    git push origin <topic-branch-name>
+    ```
 
-- [Open a Pull Request](https://help.github.com/articles/using-pull-requests) with a
-    clear title and description.
+- [Abrir uma solicitação pull](https://help.github.com/articles/using-pull-requests) com um
+     título e descrição claros.
 
-[Forum]: https://forum.libreelec.tv/
-[issue]: https://github.com/LibreELEC/LibreELEC.tv/issues
-[logfiles]: https://wiki.libreelec.tv/index.php?title=LibreELEC_FAQ#Support_Logs
-[similar issue]: https://github.com/LibreELEC/LibreELEC.tv/search?&ref=cmdform&type=Issues
+[Fórum]: https://forum.libreelec.tv/
+[edição]: https://github.com/LibreELEC/LibreELEC.tv/issues
+[arquivos de log]: https://wiki.libreelec.tv/index.php?title=LibreELEC_FAQ#Support_Logs
+[problema semelhante]: https://github.com/LibreELEC/LibreELEC.tv/search?&ref=cmdform&type=Issues
