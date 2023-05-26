@@ -5,8 +5,20 @@ NEO EmuELEC 4.7
 
 CORREÇÕES ABAIXO:
 
+ - Tradução do PACKAGE BUMP.SH - APLICATIVO DE ATUALIZAÇÃO AUTOMATICA
+ https://github.com/andrellvs/Neo_EmuELEC/blob/2-dev-v.4.6-.S905.X3.X4-SLIM/package_bump.sh
+
  - Mudar a versão do EmuELEC no menu inicial:
 https://github.com/andrellvs/EmuELEC_NinjaBrothers/edit/master_REBORN/packages/sx05re/emuelec/config/EE_VERSION
+
+ - Mudar a versão do EmuELEc do texto de instalação inicial:
+ https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/dev_slim_emulationstationplus/packages/sysutils/busybox/scripts/lsb_release
+ 
+ - Traduzir/modificar texto de particionamento do cartão SD durante instalação inicial:
+ https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/dev_slim_emulationstationplus/packages/sysutils/busybox/scripts/fs-resize
+ 
+- Mudar a versão das isos que compila para sua marca 
+https://github.com/andrellvs/Neo_EmuELEC/blob/2-dev-v.4.6-.S905.X3.X4-SLIM/distributions/EmuELEC/version
 
 - Adicionar temas aqui:(adicionados: es-theme-Chicuelo / es-theme-EmuELEC-carbon/ )
 https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/dev/packages/sx05re/emuelec-emulationstation/package.mk
@@ -48,8 +60,9 @@ https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master_REBORN/packages/s
  https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master_REBORN/emuelec-addon.sh
  - es-theme-ComicBook advancemame reicastsa amiberry hatarisa mupen64plus-nx dinothawr lutro mrboom easyrpg openlara pocketcdg
  ----------------------------
- - Removidos LBRETRO-CORES de EMUELEC-OPTIONS : 
+ - Removidos LBRETRO-CORES e PORTS de EMUELEC-OPTIONS : AQUI TEM OUTRAS OPÇÕES IMPORTANTES PARA CONFIGURAR!!!!
  https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master_REBORN/distributions/EmuELEC/options
+ 
 
 - VERSÃO FULL EXCLUÍDOS: cannonball(outrun engine) easyrpg(EasyRPG/Player) dinothawr(puzzle) mrboom(Bomberman) pocketcdg(Karaoke) pokemini(Obscure nintendo handheld emulator)
 prboom(prboom for Kodi) reminiscence(Flashback) xrick(Game Engine) gme(Game_Music_Emu) nxengine(Cave Story)  dosbox-svn tic-80(fantasy computer) tyrquake(Quake 1)
@@ -70,7 +83,7 @@ chailove lutro crocods
  https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master_REBORN/packages/sx05re/tools/emuelec-tools/package.mk
   - poppler Skyscraper  
   
-  
+   - REMOÇÃO DE PACKAGES DE 32 BITS 
  https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/master_REBORN/packages/sx05re/emuelec/package.mk 
  ----------------------------------------------------------------------------------------------------------------
 # v4.6
