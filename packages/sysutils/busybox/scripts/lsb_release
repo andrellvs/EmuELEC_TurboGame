@@ -5,4 +5,5 @@
 
 # show release information
 . /etc/os-release
-echo "$PRETTY_NAME"
+#echo "$PRETTY_NAME"
+echo "NeoEmuelec -GAMER NINJABROTHERS 2023!
