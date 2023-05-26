@@ -13,9 +13,13 @@ PKG_SECTION="emuelec"
 PKG_SHORTDESC="EmuELEC Ports Meta Package"
 PKG_TOOLCHAIN="manual"
 
-#PKG_DEPENDS_TARGET REMOVIDOS: supertux(compilador bugado) 
+
+PKG_DEPENDS_TARGET+=""
+
+#PKG_DEPENDS_TARGET REMOVIDOS: 
 #PKG_DEPENDS_TARGET+=" commander-genius \
 #                devilutionX \
+#                supertux \(compilador bugado) 
 #                sdlpop \
 #                VVVVVV \
 #                opentyrian \
@@ -41,8 +45,9 @@ PKG_TOOLCHAIN="manual"
 #                shovelknight \
 #                tmntsr"
 
-#amlogicports=""
-#hhports=""
+amlogicports=""
+#hhports=" openjazz"
+hhports=""
 
 if [ "${DEVICE}" == "Amlogic"* ]; then
 	PKG_DEPENDS_TARGET+="${amlogicports}"
