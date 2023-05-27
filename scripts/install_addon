@@ -36,14 +36,14 @@ if [ -f ${ADDON_INSTALL_DIR}/${PKG_ADDON_ID}-${ADDONVER}.zip ]; then
   if [ "${ADDON_OVERWRITE}" = "yes" ]; then
     rm ${ADDON_INSTALL_DIR}/${PKG_ADDON_ID}-${ADDONVER}.zip
   else
-    build_msg "CLR_WARNING" "*** WARNING: ${PKG_ADDON_ID}-${ADDONVER}.zip already exists. Not overwriting it. ***"
+    build_msg "CLR_WARNING" "*** AVISO: ${PKG_ADDON_ID}-${ADDONVER}.zip já existe. Não é sobrescrevê-lo. ***"
     pkg_lock_status "UNLOCK" "${PKG_NAME}" "packadd" "already packed"
     exit 0
   fi
 fi
 
 cd ${ADDON_BUILD}
-build_msg "CLR_INFO" "*** compressing addon ${PKG_ADDON_ID} ... ***"
+build_msg "CLR_INFO" "*** addon de compactação ${PKG_ADDON_ID} ... ***"
 ${TOOLCHAIN}/bin/7za a -l -mx9 -bsp0 -bso0 -tzip ${PKG_ADDON_ID}-${ADDONVER}.zip ${PKG_ADDON_ID}
 cd - &>/dev/null
 
@@ -83,9 +83,8 @@ if [ "${ADDON_JENKINS}" = "yes" ]; then
   ( cd ${ADDON_JENKINS_DIR}
     sha256sum ${ADDON_JENKINS_ADDON_NAME}.zip > ${ADDON_JENKINS_ADDON_NAME}.zip.sha256
   )
-  build_msg "CLR_INFO" "*** creating ${ADDON_JENKINS_ADDON_NAME}.zip for Jenkins complete ***"
+build_msg "CLR_INFO" "*** criando ${ADDON_JENKINS_ADDON_NAME}.zip para Jenkins completo ***"
 else
-  build_msg "CLR_INFO" "*** creating  ${PKG_ADDON_ID} complete ***"
+build_msg "CLR_INFO" "*** criação de ${PKG_ADDON_ID} completa ***"
 fi
-
 pkg_lock_status "UNLOCK" "${PKG_NAME}" "packadd" "packed"
