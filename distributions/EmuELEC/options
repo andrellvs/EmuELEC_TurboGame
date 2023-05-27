@@ -242,7 +242,8 @@
   
 LAKKA_MIRROR="http://sources.lakka.tv"
 
-#REMOVIDOS: dosbox-svn \ ppsspp \
+#REMOVIDOS: dosbox-svn \ ppsspp \ tic-80 \
+
 
 LIBRETRO_CORES="2048 \
 81 \
@@ -307,7 +308,6 @@ snes9x2010 \
 spring \
 stella \
 tgbdual \
-tic-80 \
 tyrquake \
 xrick \
 uae4arm \
