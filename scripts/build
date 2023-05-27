@@ -57,7 +57,7 @@ fi
 
 ${SCRIPTS}/unpack "${PKG_NAME}" "${PARENT_PKG}"
 
-# build dependencies, only when PKG_DEPENDS_? is filled
+# construir dependências, somente quando PKG_DEPENDS_? está cheio
 unset _pkg_depends
 case "${TARGET}" in
   "target") _pkg_depends="${PKG_DEPENDS_TARGET}";;
@@ -72,7 +72,7 @@ if is_sequential_build; then
   done
 fi
 
-# virtual packages are not built as they only contain dependencies, so dont go further here
+# pacotes virtuais não são construídos, pois contêm apenas dependências, então não vá mais longe aqui
 if [ "${PKG_SECTION}" = "virtual" ]; then
   PKG_DEEPHASH=$(calculate_stamp)
   for i in PKG_NAME PKG_DEEPHASH BUILD_WITH_DEBUG; do
@@ -90,12 +90,12 @@ else
   build_msg "CLR_BUILD" "BUILD" "${PKG_NAME} $(print_color "CLR_TARGET" "(${TARGET})")" "indent"
 fi
 
-# setup configure scripts
+# configurar scripts de configuração
 PKG_CONFIGURE_SCRIPT="${PKG_CONFIGURE_SCRIPT:-${PKG_BUILD}/configure}"
 PKG_CMAKE_SCRIPT="${PKG_CMAKE_SCRIPT:-${PKG_BUILD}/CMakeLists.txt}"
 PKG_MESON_SCRIPT="${PKG_MESON_SCRIPT:-${PKG_BUILD}/meson.build}"
 
-# auto detect toolchain
+# cadeia de ferramentas de detecção automática
 _auto_toolchain=""
 if [ -z "${PKG_TOOLCHAIN}" -o "${PKG_TOOLCHAIN}" = "auto" ]; then
   if [ -f "${PKG_MESON_SCRIPT}" ]; then
@@ -107,7 +107,7 @@ if [ -z "${PKG_TOOLCHAIN}" -o "${PKG_TOOLCHAIN}" = "auto" ]; then
   elif [ -f "${PKG_BUILD}/Makefile" ]; then
     PKG_TOOLCHAIN="make"
   else
-    die "Not possible to detect toolchain automatically. Add PKG_TOOLCHAIN= to package.mk"
+    die "Não é possível detectar a cadeia de ferramentas automaticamente. Adicione PKG_TOOLCHAIN= a package.mk"
   fi
   _auto_toolchain=" (auto-detect)"
 fi
@@ -116,7 +116,7 @@ if ! listcontains "meson cmake cmake-make configure ninja make autotools manual"
 fi
 build_msg "CLR_TOOLCHAIN" "TOOLCHAIN" "${PKG_TOOLCHAIN}${_auto_toolchain}"
 
-# check wrong toolchain configuration
+# verifique a configuração incorreta da cadeia de ferramentas
 check_toolchain_config ${TARGET} ${PKG_TOOLCHAIN}
 
 # multilib support
