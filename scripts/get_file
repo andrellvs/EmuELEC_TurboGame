@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 # Copyright (C) 2018-present Team LibreELEC (https://libreelec.tv)
 
-build_msg "CLR_GET" "GET" "${1} (file)" "indent"
+build_msg "CLR_GET" "GET" "${1} (file)" "recuar"
 
-pkg_lock_status "GETPKG" "${PKG_NAME}" "unpack" "processing package file..."
+pkg_lock_status "GETPKG" "${PKG_NAME}" "descompactar" "processando arquivo de pacote..."
