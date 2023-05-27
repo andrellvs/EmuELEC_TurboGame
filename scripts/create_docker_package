@@ -148,7 +148,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 if [ -z "${image}" ]; then
-    echo "Failed to parse image"
+    echo "Falha ao analisar a imagem"
     exit 1
 fi
 
@@ -156,7 +156,7 @@ name="${image//\//.}"
 dir="packages/addons/docker/${name}"
 
 if [ -d "${dir}" ]; then
-    echo "Package already exists"
+    echo "Pacote já existe"
     exit 1
 fi
 
