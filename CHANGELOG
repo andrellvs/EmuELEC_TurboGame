@@ -13,7 +13,7 @@ https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/dev/packages/sx05re/emue
 https://github.com/andrellvs/EmuELEC_NinjaBrothers/tree/dev/packages/sx05re/emuelec-emulationstation/themes
 
 - PPSSPP: Arquivo "max-fps-setting.patch" exlcuído por impedir a compilação do emulador.
-- RTL8821CU/package.mk - Atualizada a PKG_VERSION para : PKG_VERSION="e49409f22ceea0d5b5ef431e6170580028b84c9d"
+- RTL8821CU/package.mk - Atualizada a PKG_VERSION para : PKG_VERSION="e49409f22ceea0d5b5ef431e6170580028b84c9d" 8821cu-20210916
 - POPPLER/package.mk - Copiado o MK da BRANCH DEV.4.6 que é atualizada e diferente.
 - POPPLER Excluido do BRANCH 6-master+splash-4.6-S9X3.X4-SLIM  e seu clone 6-master+splash-4.6-S9X3.X4-SLIM+EXTRATHEMES
 
