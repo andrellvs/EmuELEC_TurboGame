@@ -14,36 +14,40 @@ PKG_SHORTDESC="EmuELEC Ports Meta Package"
 PKG_TOOLCHAIN="manual"
 
 
-PKG_DEPENDS_TARGET+=" commander-genius \
-                devilutionX \
-                sdlpop \
-                VVVVVV \
-                opentyrian \
-                bermuda \
-                hodesdl \
-                hydracastlelabyrinth \
-                eduke \
-                rigelengine \
-                sonic2013 \
-                soniccd \
-                supertux \
-                supertuxkart \
-                chocolate-doom \
-                lzdoom \
-                supermariowar \
-                bstone \
-                hurrican \
-                cdogs-sdl \
-                abuse \
-                fheroes2 \
-                augustus \
-                xash3d \
-                sonicmania \
-                shovelknight \
-                tmntsr"
+PKG_DEPENDS_TARGET+=""
+
+#PKG_DEPENDS_TARGET REMOVIDOS: 
+#PKG_DEPENDS_TARGET+=" commander-genius \
+#                devilutionX \
+#                supertux \(compilador bugado) 
+#                sdlpop \
+#                VVVVVV \
+#                opentyrian \
+#                bermuda \
+#                hodesdl \
+#                hydracastlelabyrinth \
+#                eduke \
+#                rigelengine \
+#                sonic2013 \
+#                soniccd \
+#                supertuxkart \
+#                chocolate-doom \
+#                lzdoom \
+#                supermariowar \
+#                bstone \
+#                hurrican \
+#                cdogs-sdl \
+#                abuse \
+#                fheroes2 \
+#                augustus \
+#                xash3d \
+#                sonicmania \
+#                shovelknight \
+#                tmntsr"
 
 amlogicports=""
-hhports=" openjazz"
+#hhports=" openjazz"
+hhports=""
 
 if [ "${DEVICE}" == "Amlogic"* ]; then
 	PKG_DEPENDS_TARGET+="${amlogicports}"
