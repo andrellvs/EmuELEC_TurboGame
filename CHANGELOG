@@ -25,7 +25,8 @@ https://github.com/andrellvs/Neo_EmuELEC/edit/3-dev-4.3-S9X2.X3-FULL/distributio
 - CORRIGIDO ERRO DE quasi88 - DEV 4.6 COPIADO O DEV 4.6 ATUAL PARA O DEV 4.3 ULTRAPASSADO
 REMOVIDOS: #PKG_EXPERIMENTAL="munt nestopiaCV quasi88 xmil np2kai hypseus-singe dosbox-x"
 
-- CORRIGIDO ERRO VVVVVV
+- CORRIGIDO ERRO VVVVVV + bermuda 
+
 https://github.com/andrellvs/Neo_EmuELEC/blob/3-dev-4.3-S9X2.X3-FULL/packages/sx05re/emuelec-ports/package.mk
 ======================================================
 
