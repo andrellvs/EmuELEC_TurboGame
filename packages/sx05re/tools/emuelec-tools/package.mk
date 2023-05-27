@@ -10,10 +10,10 @@ PKG_DEPENDS_TARGET="toolchain"
 PKG_SHORTDESC="EmuELEC tools metapackage"
 PKG_SECTION="virtual"
 
+#REMOVIDOS : scraper \ 
 PKG_DEPENDS_TARGET+=" ffmpeg \
                       libjpeg-turbo \
                       common-shaders \
-                      scraper \
                       Skyscraper \
                       MC \
                       libretro-bash-launcher \
