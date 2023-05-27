@@ -17,13 +17,17 @@ PKG_AUTORECONF="no"
 PKG_TOOLCHAIN="make"
 PKG_NEED_UNPACK="$(get_pkg_directory busybox) $(get_pkg_directory wget) $(get_pkg_directory coreutils)"
 
-PKG_EXPERIMENTAL="munt nestopiaCV quasi88 xmil np2kai hypseus-singe yabasanshiroSA fbneoSA same_cdi"
-PKG_EMUS="$LIBRETRO_CORES advancemame PPSSPPSDL amiberry hatarisa openbor dosbox-staging mupen64plus-nx mupen64plus-nx-alt scummvmsa stellasa solarus dosbox-pure pcsx_rearmed ecwolf potator freej2me duckstation flycastsa fmsx-libretro jzintv mupen64plussa"
+#ABAIXO DEFINE QUE PKG_EMUS É TAMBEM AGORA $LIBRETRO_CORES
+PKG_EMUS="$LIBRETRO_CORES"
+#ABAIXO DEFINE PKG_TOOLS É TODAS AS EMUELEC-TOOLS
 PKG_TOOLS="emuelec-tools"
-PKG_DEPENDS_TARGET+=" $PKG_TOOLS $PKG_EMUS $PKG_EXPERIMENTAL emuelec-ports"
+#ABAIXO DEFINE SÓ COMPILA JUNTO AO PKG TOOLS E PKG EMUS JUNTOS.
+PKG_DEPENDS_TARGET+=" $PKG_TOOLS $PKG_EMUS "
 
 # Removed cores for space and/or performance
-# PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET mame2015 fba4arm mba.mini.plus $LIBRETRO_EXTRA_CORES xow"
+# PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET mame2015 fba4arm mba.mini.plus advancemame PPSSPPSDL amiberry hatarisa openbor dosbox-staging mupen64plus-nx mupen64plus-nx-alt scummvmsa stellasa solarus dosbox-pure pcsx_rearmed ecwolf potator freej2me duckstation flycastsa fmsx-libretro jzintv mupen64plussa $LIBRETRO_EXTRA_CORES xow"
+# PKG_EXPERIMENTAL="munt nestopiaCV quasi88 xmil np2kai hypseus-singe yabasanshiroSA fbneoSA same_cdi"
+# PKG_DEPENDS_TARGET+="emuelec-ports"
 
 # These packages are only meant for S922x, S905x2 and A311D devices as they run poorly on S905" 
 if [ "${DEVICE}" == "Amlogic-ng" ] || [ "$DEVICE" == "RK356x" ] || [ "$DEVICE" == "OdroidM1" ]; then
@@ -48,19 +52,19 @@ if [ "$ARCH" == "aarch64" ]; then
 		PKG_DEPENDS_TARGET=$(echo $PKG_DEPENDS_TARGET | sed "s|$discore| |")
 	done
 
-  PKG_DEPENDS_TARGET+=" swanstation \
-                        lib32-essential \
-                        lib32-retroarch \
-                        emuelec-32bit-info \
-                        lib32-flycast \
-                        lib32-mupen64plus \
-                        lib32-pcsx_rearmed \
-                        lib32-uae4arm \
-                        lib32-parallel-n64 \
-                        lib32-bennugd-monolithic \
-                        lib32-droidports \
-                        lib32-box86
-                        lib32-libusb"
+ # PKG_DEPENDS_TARGET+=" swanstation \
+                        #lib32-essential \
+                        #lib32-retroarch \
+                        #emuelec-32bit-info \
+                        #lib32-flycast \
+                        #lib32-mupen64plus \
+                        #lib32-pcsx_rearmed \
+                        #lib32-uae4arm \
+                        #lib32-parallel-n64 \
+                        #lib32-bennugd-monolithic \
+                        #lib32-droidports \
+                        #lib32-box86
+                        #lib32-libusb"
 
   if [ "${DEVICE}" == "Amlogic-ng" ] || [ "$DEVICE" == "RK356x" ] || [ "$DEVICE" == "OdroidM1" ]; then
     PKG_DEPENDS_TARGET+=" dolphinSA"
