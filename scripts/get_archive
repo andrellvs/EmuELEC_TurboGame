@@ -51,7 +51,7 @@ while [ ${NBWGET} -gt 0 -a ${NBCHKS} -gt 0 ]; do
         sed -e "s|^PKG_SHA256=.*|PKG_SHA256=\"${CALC_SHA256}\"|" -i "${PKG_DIR}/package.mk"
         break 2
       else
-        build_msg "CLR_WARNING" "WARNING" "Incorrect checksum calculated on downloaded file: got ${CALC_SHA256} wanted ${PKG_SHA256}"
+        build_msg "CLR_WARNING" "WARNING" "Soma de verificação incorreta calculada no arquivo baixado: obteve ${CALC_SHA256} procurado ${PKG_SHA256}"
         NBCHKS=$((NBCHKS - 1))
       fi
     fi
@@ -60,9 +60,9 @@ while [ ${NBWGET} -gt 0 -a ${NBCHKS} -gt 0 ]; do
 done
 
 if [ ${NBWGET} -eq 0 -o ${NBCHKS} -eq 0 ]; then
-  die "\nCannot get ${1} sources : ${PKG_URL}\nTry later!"
+  die "\nNão é possível obter ${1} fontes: ${PKG_URL}\nTente mais tarde!"
 else
-  build_msg "CLR_INFO" "INFO" "Calculated checksum: ${CALC_SHA256}"
+  build_msg "CLR_INFO" "INFO" "Calculado checksum: ${CALC_SHA256}"
   echo "${PKG_URL}" > "${STAMP_URL}"
   echo "${CALC_SHA256}" > "${STAMP_SHA}"
 fi
