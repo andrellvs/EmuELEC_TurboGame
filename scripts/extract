@@ -10,9 +10,9 @@ if [ -z "${2}" ]; then
   die "usage: ${0} package_name target_dir"
 fi
 
-[ -z "${PKG_URL}" -o -z "${PKG_SOURCE_NAME}" ] && die "${PKG_NAME}: PKG_URL or PKG_SOURCE_NAME undefined"
-[ ! -d "${SOURCES}/${1}" ] && die "${PKG_NAME}: ${SOURCES}/${1} not found"
-[ ! -d "${2}" ] && die "${PKG_NAME}: target ${2} not found"
+[ -z "${PKG_URL}" -o -z "${PKG_SOURCE_NAME}" ] && die "${PKG_NAME}: PKG_URL ou PKG_SOURCE_NAME indefinido"
+[ ! -d "${SOURCES}/${1}" ] && die "${PKG_NAME}: ${SOURCES}/${1} não encontrado"
+[ ! -d "${2}" ] && die "${PKG_NAME}: target ${2} não encontrado"
 
 if [[ "${PKG_URL}" =~ ^file:// ]]; then
   FULL_SOURCE_PATH="${PKG_SOURCE_NAME}"
@@ -21,23 +21,23 @@ else
 fi
 
 if [ ! -f "${FULL_SOURCE_PATH}" -a ! -d "${FULL_SOURCE_PATH}" ]; then
-  echo "error: File ${PKG_SOURCE_NAME} doesn't exist for package ${1}"
-  echo "Have you called scripts/extract before scripts/get?"
+  echo "erro: File ${PKG_SOURCE_NAME} não existe para o pacote ${1}"
+  echo "Você chamou scripts/extract antes de scripts/get?"
   die
 fi
 
-# The build system expects packages to be extracted to
+# O sistema de compilação espera que os pacotes sejam extraídos para
 # ${PKG_BUILD}.
-# Try to strip the top level dir from the archive and extract to
-# the correct directory if possible so packages don't need to
-# set PKG_SOURCE_DIR and scripts/unpack doesn't need to rename
-# the directory.
-# Currently this is only supported for tar archives.
-# If PKG_SOURCE_DIR is set don't apply any directory mangling
-# so advanced renaming (eg stripping more than one directory level)
-# can be performed by scripts/unpack.
-# If the archive does not contain a top level folder the strip components
-# can be disabled by PKG_TAR_STRIP_COMPONENTS="no" in package.mk
+# Tente retirar o diretório de nível superior do arquivo e extrair para
+# o diretório correto, se possível, para que os pacotes não precisem
+# set PKG_SOURCE_DIR e scripts/unpack não precisa renomear
+# o diretório.
+# Atualmente, isso é suportado apenas para arquivos tar.
+# Se PKG_SOURCE_DIR estiver definido, não aplique nenhuma alteração de diretório
+# renomeação tão avançada (por exemplo, removendo mais de um nível de diretório)
+# pode ser executado por scripts/unpack.
+# Se o arquivo não contiver uma pasta de nível superior, os componentes da faixa
+# pode ser desabilitado por PKG_TAR_STRIP_COMPONENTS="no" em package.mk
 TAR_OPTS=""
 if [ -z "${PKG_SOURCE_DIR}" ]; then
   [ -z "${PKG_TAR_STRIP_COMPONENTS}" ] && TAR_OPTS="--strip-components=1" || :
