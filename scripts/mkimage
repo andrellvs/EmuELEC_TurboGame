@@ -56,11 +56,11 @@ show_error() {
 
 trap cleanup SIGINT
 
-# create an image
+#cria uma imagem
 echo -e "\nimage: criando arquivo esparso para imagem de disco ${DISK##*/}..."
 dd if=/dev/zero of="${DISK}" bs=1M count=0 seek="${DISK_SIZE}" conv=fsync >"${SAVE_ERROR}" 2>&1 || show_error
 
-# write a disklabel
+#escrever uma etiqueta de disco
 echo "imagem: criando ${DISK_LABEL} tabela de partição..."
 parted -s "${DISK}" mklabel ${DISK_LABEL}
 sync
@@ -116,7 +116,7 @@ dd if="${LE_TMP}/part2.ext4" of="${DISK}" bs=512 seek="${STORAGE_PART_START}" co
 
 # cria imagem de disco para dispositivo virtual
 if [ "${PROJECT}" = "Generic" ]; then
-  echo "image: creating open virtual appliance..."
+  echo "imagem: criando dispositivo virtual aberto..."
   # duplicate ${DISK} so anything we do to it directly doesn't effect original
   dd if="${DISK}" of="${DISK_BASENAME}.tmp" bs=1M conv=fsync >"${SAVE_ERROR}" 2>&1 || show_error
 fi
@@ -127,12 +127,12 @@ SYSTEM_PART_COUNT=$(( ${SYSTEM_PART_END} - ${SYSTEM_PART_START} + 1 ))
 sync
 dd if=/dev/zero of="${LE_TMP}/part1.fat" bs=512 count=0 seek="${SYSTEM_PART_COUNT}" conv=fsync >"${SAVE_ERROR}" 2>&1 || show_error
 
-shopt -s expand_aliases  # enables alias expansion in script
+shopt -s expand_aliases  # ativa a expansão do alias no script
 alias mcopy='mcopy -i "${LE_TMP}/part1.fat" -o'
 alias mmd='mmd -i "${LE_TMP}/part1.fat"'
 
-# create filesystem on part1
-echo "image: creating filesystem on part1..."
+# cria sistema de arquivos na parte1
+echo "imagem: criando sistema de arquivos na parte1..."
 
 if [ "${BOOTLOADER}" = "syslinux" -o "${BOOTLOADER}" = "bcm2835-bootloader" -o "${BOOTLOADER}" = "u-boot" ]; then
   mformat -i "${LE_TMP}/part1.fat" -v "${DISTRO_BOOTLABEL}" -N "${UUID_SYSTEM//-/}" :: >"${SAVE_ERROR}" 2>&1 || show_error
@@ -140,18 +140,18 @@ fi
 sync
 
 if [ "${BOOTLOADER}" = "syslinux" ]; then
-  # create bootloader configuration
-  echo "image: creating bootloader configuration..."
+ # cria configuração do bootloader
+  echo "imagem: criando a configuração do bootloader..."
   cat << EOF > "${LE_TMP}/syslinux.cfg"
-SAY Wait for installer mode to start automatically in 5 seconds...
+SAY Aguarde o modo de instalação iniciar automaticamente em 5 segundos...
 SAY
-SAY Options
+SAY Opções
 SAY =======
-SAY installer: permanently install ${DISTRO} to HDD/SSD
-SAY live: boot ${DISTRO} using RAM for temporary storage
-SAY run: boot ${DISTRO} using this USB memory device for storage
+SAY instalador: instale ${DISTRO} permanentemente no HDD/SSD
+SAY live: inicializa ${DISTRO} usando RAM para armazenamento temporário
+SAY execute: inicialize ${DISTRO} usando este dispositivo de memória USB para armazenamento
 SAY
-DEFAULT installer
+DEFAULT instalador
 TIMEOUT 50
 PROMPT 1
 
@@ -206,7 +206,7 @@ EOF
 
 elif [ "${BOOTLOADER}" = "bcm2835-bootloader" ]; then
   # create bootloader configuration
-  echo "image: creating bootloader configuration..."
+  echo "imagem: criando a configuração do bootloader..."
   cat << EOF > "${LE_TMP}/cmdline.txt"
 boot=UUID=${UUID_SYSTEM} disk=UUID=${UUID_STORAGE} quiet ${EXTRA_CMDLINE}
 EOF
@@ -214,7 +214,7 @@ EOF
   mcopy "${LE_TMP}/cmdline.txt" :: >"${SAVE_ERROR}" 2>&1 || show_error
 
   # copy files
-  echo "image: copying files to part1..."
+  echo "imagem: copiando arquivos para part1..."
   mcopy "${TARGET_IMG}/${BUILD_NAME}.kernel" "::/${KERNEL_NAME}" >"${SAVE_ERROR}" 2>&1 || show_error
   mcopy "${TARGET_IMG}/${BUILD_NAME}.system" ::/SYSTEM >"${SAVE_ERROR}" 2>&1 || show_error
   mcopy "${RELEASE_DIR}/target/KERNEL.md5" "::/${KERNEL_NAME}.md5" >"${SAVE_ERROR}" 2>&1 || show_error
@@ -272,7 +272,7 @@ EOF
   elif [ -f "${PROJECT_DIR}/${PROJECT}/bootloader/mkimage" ]; then
     . "${PROJECT_DIR}/${PROJECT}/bootloader/mkimage"
   else
-    echo "image: skipping u-boot. no mkimage script found"
+    echo "imagem: pulando u-boot. nenhum script mkimage encontrado"
   fi
 
   echo "image: copying files to part1..."
@@ -282,37 +282,37 @@ EOF
   mcopy "${RELEASE_DIR}/target/SYSTEM.md5" ::/SYSTEM.md5 >"${SAVE_ERROR}" 2>&1 || show_error
 
 elif [ "${BOOTLOADER}" = "u-boot" ]; then
-  echo "to make an image using u-boot UBOOT_SYSTEM must be set"
+  echo "para fazer uma imagem usando u-boot UBOOT_SYSTEM deve ser definido"
   cleanup
   exit
 fi # bootloader
 
 # run fsck
-echo "image: checking filesystem on part1..."
+echo "imagem: verificando o sistema de arquivos na parte 1..."
 sync
 fsck.fat -n "${LE_TMP}/part1.fat" >"${SAVE_ERROR}" 2>&1 || show_error
 
-# merge part1 into disk image
-echo "image: merging part1 into disk image..."
+# mesclar part1 na imagem de disco
+echo "imagem: mesclando a parte 1 na imagem do disco..."
 dd if="${LE_TMP}/part1.fat" of="${DISK}" bs=512 seek="${SYSTEM_PART_START}" conv=fsync,notrunc >"${SAVE_ERROR}" 2>&1 || show_error
 
-# finalize virtual appliance
+# finalizar dispositivo virtual
 if [ "${PROJECT}" = "Generic" ]; then
   # change syslinux default to 'run'
-  echo "image: modifying files on part1 for open virtual appliance..."
+  echo "imagem: modificando arquivos na parte 1 para aplicação virtual aberta..."
   sed -e "/DEFAULT/ s/installer/run/" -i "${LE_TMP}/syslinux.cfg"
   sed -e "/set default=/s/\"Installer\"/\"Run\"/" -i "${LE_TMP}/grub.cfg"
   mcopy "${LE_TMP}/syslinux.cfg" :: >"${SAVE_ERROR}" 2>&1 || show_error
   mcopy "${LE_TMP}/grub.cfg" ::/EFI/BOOT >"${SAVE_ERROR}" 2>&1 || show_error
   sync
   # run fsck
-  echo "image: checking filesystem on part1..."
+  echo "imagem: verificando o sistema de arquivos na parte 1..."
   fsck.fat -n "${LE_TMP}/part1.fat" >"${SAVE_ERROR}" 2>&1 || show_error
-  # merge modified part1 into tmp disk image
-  echo "image: merging part1 into open virtual appliance..."
+  # mesclar part1 modificado na imagem de disco tmp
+  echo "imagem: mesclando part1 em dispositivo virtual aberto..."
   dd if="${LE_TMP}/part1.fat" of="${DISK_BASENAME}.tmp" bs=512 seek="${SYSTEM_PART_START}" conv=fsync,notrunc >"${SAVE_ERROR}" 2>&1 || show_error
-  # create vmdk from tmp ${DISK}
-  echo "image: creating vmdk for open virtual appliance..."
+  # cria vmdk de tmp ${DISK}
+  echo "imagem: criando vmdk para dispositivo virtual aberto..."
   qemu-img convert -O vmdk -o subformat=streamOptimized "${DISK_BASENAME}.tmp" "${DISK_BASENAME}.vmdk"
   # generate ovf from template
   sed -e "s,@DISTRO@,${DISTRO},g" -e "s,@DISK@,${IMAGE_NAME},g" \
@@ -325,13 +325,13 @@ if [ "${PROJECT}" = "Generic" ]; then
     cd "${TARGET_IMG}"
     sha256sum "${IMAGE_NAME}.ova" > "${IMAGE_NAME}.ova.sha256"
   )
-  echo "image: cleaning up open virtual appliance..."
+  echo "imagem: limpando o dispositivo virtual aberto..."
   # remove tmp ${DISK}, vmdk and ovf
   rm "${DISK_BASENAME}.tmp" "${DISK_BASENAME}.vmdk" "${DISK_BASENAME}.ovf"
 fi
 
 # gzip
-echo "image: compressing..."
+echo "imagem: compactando..."
 pigz --best --force "${DISK}"
 
 # create sha256 checksum of image
