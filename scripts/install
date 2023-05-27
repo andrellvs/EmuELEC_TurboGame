@@ -12,11 +12,11 @@ if [ -z "${1}" ]; then
 fi
 
 if [ -z "${PKG_NAME}" ]; then
-  die "$(print_color CLR_ERROR "${1}: no package.mk file found")"
+  die "$(print_color CLR_ERROR "${1}: nenhum arquivo package.mk encontrado")"
 fi
 
 if [ -z "${INSTALL}" ] ; then
-  die "error: '\${INSTALL}' not set! this script is not intended to be run manually"
+  die "error: '\${INSTALL}' não definido! este script não deve ser executado manualmente"
 fi
 
 if [ -n "${PKG_ARCH}" ]; then
