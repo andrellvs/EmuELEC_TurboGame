@@ -16,7 +16,7 @@ package_worker() {
   if [ -z "${oseqinfo}" ]; then
     ${SCRIPTS}/${task} ${pkgname} 2>&1 && result=0 || result=1
   else
-    print_color CLR_ERROR "FAILURE [${task} ${pkgname}]: a previous dependency process has already failed!"
+    print_color CLR_ERROR "FALHA [${task} ${pkgname}]: um processo de dependência anterior já falhou!"
     echo
     echo
 
@@ -26,10 +26,10 @@ package_worker() {
       read -r ftask fpkgname fseq <<< "${failed_items//,/ }"
 
       if [ -n "${fseq}" ]; then
-        [ ${num} -eq 1 ] && echo "The following log(s) for already failed dependencies are available:"
+        [ ${num} -eq 1 ] && echo "O(s) seguinte(s) log(s) para dependências já com falha estão disponíveis:"
         printf "  %-7s %s => %s\n" "${ftask}" "${fpkgname}" "${THREAD_CONTROL}/logs/${fseq}.log"
       else
-        print_color CLR_ERROR "ALREADY FAILED [${ftask} ${fpkg}]"
+        print_color CLR_ERROR "FALHOU [${ftask} ${fpkg}]"
         echo
       fi
     done
@@ -69,7 +69,7 @@ package_worker() {
   else
     pkg_lock_status "FAILED" "${pkgname}" "${task}"
 
-    print_color CLR_ERROR "FAILURE: $SCRIPTS/${task} ${pkgname} has failed!"
+    print_color CLR_ERROR "FAILURE: $SCRIPTS/${task} ${pkgname} falhou!"
     echo
   fi
 
