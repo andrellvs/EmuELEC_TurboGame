@@ -14,7 +14,7 @@ clean_package() {
     return
   fi
 
-  # Use a wildcard here to remove all versions of the package
+  # Use um curinga aqui para remover todas as versões do pacote
   for i in "${BUILD}/build/${1}-"* \
            "${BUILD}/install_pkg/${1}-"* \
            "${BUILD}/install_init/${1}-"*; do
@@ -25,7 +25,7 @@ clean_package() {
         rm -rf "${i}"
       fi
     elif [ -d "${i}" -a -f "${i}/.libreelec-package" ]; then
-      # force clean if no stamp found (previous unpack failed)
+      # force a limpeza se nenhum carimbo for encontrado (falha na descompactação anterior)
       . "${i}/.libreelec-package"
       if [ "${INFO_PKG_NAME}" = "${1}" ]; then
         build_msg "CLR_WARNING" "*" "$(print_color "CLR_WARNING_DIM" "Removing ${i} ...")"
