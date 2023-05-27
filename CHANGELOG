@@ -8,8 +8,11 @@ PKG_VERSION="10.42"
 PKG_SHA256="8d36cd8cb6ea2a4c2bb358ff6411b0c788633a2a45dabbf1aeb4b701d1b5e840"
 
 - CORRIGIDO ERRO NAO COMPILA EXCLUINDO E REMOVIDOS: scraper \ Skyscraper \
-
-
+- CORRIGIDO ERRO DA VERSÃO DESATUALIZA DE apache-ant 1.10.11:
+PKG_NAME="apache-ant"
+PKG_VERSION="1.10.12"
+PKG_SHA256="baa049855cdecbefa62539555824058e52412e5ebe8f102e1db944cb762e06d9"
+- CORRIGIDO ERRO DE dosbox-svn EXCLUINDO ELE DA COMPILAÇÃO
 
 
 ======================================================
