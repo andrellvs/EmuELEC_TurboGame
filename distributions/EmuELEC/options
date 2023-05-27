@@ -242,6 +242,8 @@
   
 LAKKA_MIRROR="http://sources.lakka.tv"
 
+#REMOVIDOS: dosbox-svn \
+
 LIBRETRO_CORES="2048 \
 81 \
 atari800 \
@@ -257,7 +259,6 @@ cannonball \
 cap32 \
 daphne \
 dinothawr \
-dosbox-svn \
 easyrpg \
 fbalpha2012 \
 fbneo \
