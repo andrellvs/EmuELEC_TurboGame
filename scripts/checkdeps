@@ -36,7 +36,7 @@ get_deps() {
 get_yes_no()
 {
   local ans
-  read -p "Would you like to install the needed tools? (y/n)" ans
+  read -p "Gostaria de instalar as ferramentas necessárias? (s/n)" ans
   [ "${ans,,}" = "y" ] && return 0
   [ "${ans,,}" = "yes" ] && return 0
   return 1
@@ -98,7 +98,7 @@ perl_map=(
 if [ "$(uname -m)" = "aarch64" ] && [ "${PROJECT}" = "Rockchip" -o "${PROJECT}" = "Amlogic" ]; then
   dep_map[qemu-x86_64]=qemu-user-binfmt
   if [ ! -f /lib64/ld-linux-x86-64.so.2 -o ! -f /lib/x86_64-linux-gnu/libc.so.6 ]; then
-    echo -e "Copy from a working x86_64 system:\n\t/lib64/ld-linux-x86-64.so.2\n\t/lib/x86_64-linux-gnu/libc.so.6"
+    echo -e "Copiar de um sistema x86_64 em funcionamento:\n\t/lib64/ld-linux-x86-64.so.2\n\t/lib/x86_64-linux-gnu/libc.so.6"
   fi
   file_map[/lib64/ld-linux-x86-64.so.2]="libc6:amd64"
   file_map[/lib/x86_64-linux-gnu/libc.so.6]="libc6:amd64"
@@ -253,11 +253,11 @@ if [ "${DEBUG}" = "true" ]; then
 fi
 
 if [ "${#need_map[@]}" -gt 0 ]; then
-  echo "**** This system lacks the following tools needed to build ${DISTRONAME} ****"
+  echo "**** Este sistema não possui as seguintes ferramentas necessárias para construir ${DISTRONAME} ****"
   for key in "${!need_map[@]}"; do
-    echo "${key} provided by ${need_map[${key}]}"
+    echo "${key} fornecido por${need_map[${key}]}"
   done
-  echo "**** The system appears to be a ${DISTRO} system ****"
+  echo "**** O sistema parece ser um ${DISTRO} sistema ****"
 
   if command -v sudo >/dev/null; then
     case "${DISTRO}" in
@@ -284,12 +284,12 @@ if [ "${#need_map[@]}" -gt 0 ]; then
         get_yes_no && sudo zypper install -y --no-recommends "${need_map[@]}"
         ;;
       *)
-        echo "**** unsupported distro ${DISTRO} ****"
+        echo "**** distribuição não suportada ${DISTRO} ****"
         exit 1
         ;;
     esac
   else
-    echo "The command 'sudo' was not found. Please install necessary packages manually."
+    echo "O comando 'sudo' não foi encontrado. Instale os pacotes necessários manualmente."
     exit 1
   fi
 fi
@@ -298,9 +298,9 @@ fi
 get_deps
 
 if [ "${#need_map[@]}" -gt 0 ]; then
-  echo "**** The following packages were not installed correctly ****"
+  echo "**** Os seguintes pacotes não foram instalados corretamente ****"
   for key in "${!need_map[@]}"; do
-    echo "${key} provided by ${need_map[${key}]}"
+    echo "${key} fornecido por ${need_map[${key}]}"
   done
   echo "********"
   exit 1
