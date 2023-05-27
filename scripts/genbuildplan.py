@@ -296,9 +296,9 @@ def processPackages(args, packages):
             for t in pkg.deps:
                 for d in pkg.deps[t]:
                     if split_package(d)[0] not in needed_map:
-                        msg = f'Invalid package reference: dependency {d} in package {pkgname}::PKG_DEPENDS_{t.upper()} is not valid'
+                        msg = f'Referência de pacote inválido: a dependência {d} no pacote {pkgname}::PKG_DEPENDS_{t.upper()} não é válida'
                         if args.warn_invalid:
-                            eprint(f"WARNING: {msg}")
+                            eprint(f"AVISO: {msg}")
                         else:
                             raise Exception(msg)
 
@@ -324,7 +324,7 @@ def processPackages(args, packages):
                         dpkg = packages[dfq_p]
                         node_map[dfq] = Node(dfq_p, dfq_t, dpkg.section)
                     elif not args.ignore_invalid:
-                        raise Exception(f"Invalid package! Package {dfq_p} cannot be found for this PROJECT/DEVICE/ARCH")
+                        raise Exception(f"Pacote inválido! O pacote {dfq_p} não pode ser encontrado para este PROJETO/DISPOSITIVO/ARCH")
 
     # To each target-specific node, add the corresponding
     # target-specific dependency nodes ("edges")
@@ -334,7 +334,7 @@ def processPackages(args, packages):
             if args.warn_invalid:
                 continue
             else:
-                raise Exception(f"Invalid package! Package {node.name} cannot be found for this PROJECT/DEVICE/ARCH")
+                raise Exception(f"Pacote inválido! O pacote {node.name} não pode ser encontrado para este PROJETO/DISPOSITIVO/ARCH")
         for dep in needed_map[node.name].deps[node.target]:
             dfq = dep if dep.find(":") != -1 else f"{dep}:target"
             if dfq in node_map:
@@ -343,27 +343,27 @@ def processPackages(args, packages):
     return node_map
 
 #---------------------------------------------
-parser = argparse.ArgumentParser(description="Generate package dependency list for the requested build/install packages.    \
-                                              Package data will be read from stdin in JSON format.", \
+parser = argparse.ArgumentParser(description="Gerar lista de dependências de pacotes para os pacotes de compilação/instalação solicitados. \
+                                           Os dados do pacote serão lidos do stdin no formato JSON.", \
                                  formatter_class=lambda prog: argparse.HelpFormatter(prog,max_help_position=25,width=90))
 
 parser.add_argument("-b", "--build", nargs="+", metavar="PACKAGE", required=True, \
-                    help="Space-separated list of build trigger packages, either for host or target. Required property - specify at least one package.")
+                   help="Lista separada por espaço de pacotes de acionadores de compilação, para host ou destino. Propriedade necessária - especifique pelo menos um pacote.")
 
 parser.add_argument("--warn-invalid", action="store_true", default=False, \
-                    help="Warn about invalid/missing dependency packages, perhaps excluded by a PKG_ARCH incompatability. Default is to abort.")
+                    help="Avisar sobre pacotes de dependência inválidos/ausentes, talvez excluídos por uma incompatibilidade PKG_ARCH. O padrão é abortar.")
 
 parser.add_argument("--ignore-invalid", action="store_true", default=False, \
-                    help="Ignore invalid packages.")
+                    help="Ignorar pacotes inválidos.")
 
 group =  parser.add_mutually_exclusive_group()
 group.add_argument("--show-wants", action="store_true", \
-                    help="Output \"wants\" dependencies for each step.")
+                   help="Produz dependências \"wants\" para cada etapa.")
 group.add_argument("--hide-wants", action="store_false", dest="show_wants", default=True, \
                     help="Disable --show-wants.  This is the default.")
 
 parser.add_argument("--with-json", metavar="FILE", \
-                    help="File into which JSON formatted plan will be written.")
+                   help="Arquivo no qual o plano em formato JSON será gravado.")
 
 args = parser.parse_args()
 
