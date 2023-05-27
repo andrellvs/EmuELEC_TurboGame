@@ -13,12 +13,12 @@ PKG_SECTION="emuelec"
 PKG_SHORTDESC="EmuELEC Ports Meta Package"
 PKG_TOOLCHAIN="manual"
 
-# REMOVIDOS:  VVVVVV \ bermuda \
+# REMOVIDOS:  VVVVVV \ bermuda \sdlpop \
+
 
 
 PKG_DEPENDS_TARGET+=" commander-genius \
                 devilutionX \
-                sdlpop \
                 opentyrian \
                 hodesdl \
                 hydracastlelabyrinth \
