@@ -59,13 +59,15 @@ LIBRETRO_BASE="retroarch retroarch-assets retroarch-overlays core-info common-sh
     [ -f "$OPTIONS_FILE" ] && source "$OPTIONS_FILE" || { echo "$OPTIONS_FILE: not found! Aborting." ; exit 1 ; }
     [ -z "$LIBRETRO_CORES" ] && { echo "LIBRETRO_CORES: empty. Aborting!" ; exit 1 ; }
 
-PKG_EMUS="emulationstation-addon advancemame reicastsa amiberry hatarisa mupen64plus-nx"
+PKG_EMUS="emulationstation-addon"
+# REmoved for PKG_EMUS= above: advancemame reicastsa amiberry hatarisa mupen64plus-nx"
 
 # PPSSPPSDL and openbor do not work on CoreELEC S922x (Amlogic-ng), we use PPSSPP from libretro and remove openbor
 if [ $PROJECT = "Amlogic" ]; then
 PKG_EMUS="$PKG_EMUS PPSSPPSDL openbor"	
 fi
 
+#Removidos: es-theme-ComicBook  
 PACKAGES_Sx05RE="$PKG_EMUS \
 				emuelec \
 				empty \
@@ -75,7 +77,6 @@ PACKAGES_Sx05RE="$PKG_EMUS \
 				freeimage \
 				vlc \
 				freetype \
-				es-theme-ComicBook \
 				bash \
 				SDL_GameControllerDB \
 				libvorbisidec \
@@ -94,9 +95,9 @@ PACKAGES_Sx05RE="$PKG_EMUS \
 				capsimg"
 				
 
-  PACKAGES_ALL="$LIBRETRO_CORES"
-
-LIBRETRO_EXTRA_CORES="citra beetle-psx beetle-saturn beetle-bsnes bsnes-mercury bsnes dinothawr higan-sfc-balanced higan-sfc lutro mame2003-midway mrboom easyrpg dolphin openlara pocketcdg virtualjaguar"
+PACKAGES_ALL="$LIBRETRO_CORES"
+#Removidos: dinothawr lutro mrboom easyrpg openlara pocketcdg
+LIBRETRO_EXTRA_CORES="citra beetle-psx beetle-saturn beetle-bsnes bsnes-mercury bsnes higan-sfc-balanced higan-sfc  mame2003-midway dolphin virtualjaguar"
 
 PACKAGES_ALL="$LIBRETRO_BASE $PACKAGES_ALL $PACKAGES_Sx05RE" 
 DISABLED_CORES="libretro-database $LIBRETRO_EXTRA_CORES"
