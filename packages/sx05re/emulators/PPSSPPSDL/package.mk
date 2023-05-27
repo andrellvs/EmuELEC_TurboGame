@@ -2,13 +2,13 @@
 # Copyright (C) 2019-present Shanti Gilbert (https://github.com/shantigilbert)
 
 PKG_NAME="PPSSPPSDL"
-PKG_VERSION="9de9420878df6805a1db40ede7bd264499cb1425"
+PKG_VERSION="d1e0061dcd27a134fce182201e59c885ffb8be0d"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="MAME"
 PKG_SITE="https://github.com/hrydgard/ppsspp"
 PKG_URL="https://github.com/hrydgard/ppsspp.git"
-PKG_DEPENDS_TARGET="toolchain ffmpeg libzip libpng SDL2-git zlib zip"
+PKG_DEPENDS_TARGET="toolchain ffmpeg libzip libpng SDL2 zlib zip"
 PKG_SHORTDESC="PPSSPPDL"
 PKG_LONGDESC="PPSSPP Standalone"
 GET_HANDLER_SUPPORT="git"
@@ -16,7 +16,7 @@ PKG_BUILD_FLAGS="-lto"
 
 PKG_CMAKE_OPTS_TARGET+="-DUSE_SYSTEM_FFMPEG=ON \
                         -DUSING_FBDEV=ON \
-                        -DUSING_EGL=ON \
+                        -DUSING_EGL=OFF \
                         -DUSING_GLES2=ON \
                         -DUSING_X11_VULKAN=OFF \
                         -DUSE_DISCORD=OFF"
@@ -43,7 +43,7 @@ pre_make_target() {
 
 makeinstall_target() {
   mkdir -p $INSTALL/usr/bin
-    cp $PKG_DIR/ppsspp.sh $INSTALL/usr/bin/ppsspp.sh
+    cp $PKG_DIR/scripts/*.sh $INSTALL/usr/bin
     cp `find . -name "PPSSPPSDL" | xargs echo` $INSTALL/usr/bin/PPSSPPSDL
     ln -sf /storage/.config/ppsspp/assets $INSTALL/usr/bin/assets
     mkdir -p $INSTALL/usr/config/ppsspp/
