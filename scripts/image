@@ -151,10 +151,10 @@ for directory in etc dev proc run sys tmp usr var flash storage; do
 done
 
 # Build image contents
-MTADDONBUILD=no start_multithread_build image || die "Parallel build failure - see log for details. Time of failure: $(date)"
+MTADDONBUILD=no start_multithread_build image || die "Falha na compilação paralela - consulte o log para obter detalhes. Hora da falha: $(date)"
 
 echo
-echo "Successful build, creating image..." >&2
+echo "Compilação bem-sucedida, criando imagem..." >&2
 
 # Create legacy sym links
 ln -sfn /var/media ${INSTALL}/media
