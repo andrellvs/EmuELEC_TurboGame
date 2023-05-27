@@ -16,7 +16,7 @@ fi
 lock_source_dir() {
   exec 99<"${SOURCES}/${1}"
   if ! flock --nonblock --exclusive 99; then
-    echo "Project/Device ${DEVICE:-${PROJECT}} waiting, to avoid concurrent processing of ${1}..."
+    echo "Projeto/Dispositivo ${DEVICE:-${PROJECT}} aguardando, para evitar o processamento simultâneo de ${1}..."
     flock --exclusive 99
   fi
 }
@@ -40,11 +40,11 @@ if [ -n "${PKG_URL}" -a -n "${PKG_SOURCE_NAME}" ]; then
   esac
 
   if ! listcontains "${GET_HANDLER_SUPPORT}" "${get_handler}"; then
-    die "ERROR: get handler \"${get_handler}\" is not supported, unable to get package ${1} - aborting!"
+    die "ERRO: get handler \"${get_handler}\" não é suportado, não foi possível obter o pacote ${1} - abortando!"
   else
     get_handler="${SCRIPTS}/get_${get_handler}"
     if [ ! -f "${get_handler}" ]; then
-      die "ERROR: get handler \"${get_handler}\" does not exist, unable to get package ${1} - aborting!"
+      die "ERRO: get handler \"${get_handler}\" não existe, não foi possível obter o pacote ${1} - abortando!"
     fi
 
     . "${get_handler}"
