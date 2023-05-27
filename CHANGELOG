@@ -28,6 +28,9 @@ REMOVIDOS: #PKG_EXPERIMENTAL="munt nestopiaCV quasi88 xmil np2kai hypseus-singe 
 - CORRIGIDO ERRO VVVVVV + bermuda 
 
 https://github.com/andrellvs/Neo_EmuELEC/blob/3-dev-4.3-S9X2.X3-FULL/packages/sx05re/emuelec-ports/package.mk
+
+- CORRIGIDO ERRO ecwolf
+https://github.com/andrellvs/Neo_EmuELEC/blob/3-dev-4.3-S9X2.X3-FULL/packages/sx05re/emuelec/package.mk
 ======================================================
 
 # 4.3
