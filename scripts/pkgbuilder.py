@@ -332,9 +332,9 @@ class BuildProcess(threading.Thread):
                     returncode = cmd.returncode
                     job["cmdproc"] = cmd
                 except UnicodeDecodeError:
-                    print('\nPKGBUILDER ERROR: UnicodeDecodeError while reading cmd.stdout from "%s %s"\n' % (job["task"], job["name"]), file=sys.stderr, flush=True)
+                    print('\ERRO nPKGBUILDER: UnicodeDecodeError ao ler cmd.stdout de"%s %s"\n' % (job["task"], job["name"]), file=sys.stderr, flush=True)
         except Exception as e:
-            print("\nPKGBUILDER ERROR: %s exception while executing: %s\n" % (str(e), job["args"]), file=sys.stderr, flush=True)
+            print("\ERRO nPKGBUILDER: exceção %s ao executar:%s\n" % (str(e), job["args"]), file=sys.stderr, flush=True)
 
         job["end"] = time.time()
         job["elapsed"] = job["end"] - job["start"]
@@ -472,7 +472,7 @@ class Builder:
             if self.haltonerror and not self.failimmediately:
                 failed = [job for job in self.generator.failedJobs() if job["logfile"]]
                 if failed != []:
-                    self.oprint("\nThe following log(s) for this failure are available:")
+                    self.oprint("\nO(s) seguinte(s) log(s) para esta falha estão disponíveis:")
                     for job in failed:
                         self.oprint("  %s => %s" % (job["name"], job["logfile"]))
                     self.oprint("", flush=True)
@@ -519,7 +519,7 @@ class Builder:
 
             if self.debug:
                 freeslots = self.threadcount - self.generator.activeJobCount()
-                DEBUG("Building Now: %d active, %d idle [%s]" % (self.generator.activeJobCount(), freeslots, ", ".join(self.generator.activeJobNames())))
+                DEBUG("Construir agora: %d active, %d idle [%s]" % (self.generator.activeJobCount(), freeslots, ", ".join(self.generator.activeJobNames())))
 
         except GeneratorStalled:
             if self.verbose:
@@ -543,12 +543,12 @@ class Builder:
         except GeneratorEmpty:
             if self.generator.activeJobCount() == 0:
                 if self.debug:
-                    DEBUG("NO MORE JOBS: All jobs have completed - exiting.")
+                    DEBUG("NÃO MAIS TRABALHOS: Todos os trabalhos foram concluídos - saindo.")
                 return False
             else:
                 if self.debug:
                     n = self.generator.activeJobCount()
-                    DEBUG("NO MORE JOBS: Waiting on %d job%s to complete..." % (n, ["s",""][n == 1]))
+                    DEBUG("NÃO MAIS TRABALHOS: Aguardando a conclusão de %d trabalho%s..." % (n, ["s",""][n == 1]))
 
         return True
 
@@ -651,13 +651,13 @@ class Builder:
 
         if job["failed"]:
             if job["logfile"]:
-                self.eprint("\nThe following log for this failure is available:\n  %s\n" % job["logfile"])
+                self.eprint("\nO seguinte log para esta falha está disponível:\n  %s\n" % job["logfile"])
 
             if job["failedjobs"] and job["failedjobs"][0]["logfile"]:
                 if len(job["failedjobs"]) == 1:
-                    self.eprint("The following log from the failed dependency may be relevant:")
+                    self.eprint("O seguinte log da dependência com falha pode ser relevante:")
                 else:
-                    self.eprint("The following logs from the failed dependencies may be relevant:")
+                    self.eprint("Os seguintes logs das dependências com falha podem ser relevantes:")
                 for fjob in job["failedjobs"]:
                     self.eprint("  %-7s %s => %s" % (fjob["task"], fjob["name"], fjob["logfile"]))
                 self.eprint("")
@@ -679,10 +679,10 @@ class Builder:
                             self.oprint(line, end="")
                             log_size += len(line)
                 except UnicodeDecodeError:
-                    self.eprint("\nPKGBUILDER ERROR: UnicodeDecodeError while reading log file %s\n" % job["logfile"])
+                    self.eprint("\nERRO PKGBUILDER: UnicodeDecodeError ao ler o arquivo de log %s\n" % job["logfile"])
 
                 if job["failed"]:
-                    self.oprint("\nThe following log for this failure is available:\n  %s\n" % job["logfile"])
+                    self.oprint("\nO seguinte log para esta falha está disponível:\n  %s\n" % job["logfile"])
 
                 if self.bookends:
                     self.oprint(">>> %s seq %s >>>" % (job["name"], job["seq"]))
@@ -826,60 +826,60 @@ def DEBUG(msg):
     if DEBUG_LOG:
         print("%s: %s" % (datetime.datetime.now(), msg), file=DEBUG_LOG, flush=True)
 
-parser = argparse.ArgumentParser(description="Run processes to build the specified JSON plan", \
+parser = argparse.ArgumentParser(description="Executar processos para criar o plano JSON especificado", \
                                  formatter_class=lambda prog: argparse.HelpFormatter(prog,max_help_position=25,width=90))
 
 parser.add_argument("--max-procs", required=False, default="100%", \
-                    help="Maximum number of processes to use. 0 is unlimited. Can be expressed as " \
-                         "a percentage, for example 50%% (of $(nproc)). Default is 100%%.")
+                    help="Número máximo de processos a serem usados. 0 é ilimitado. Pode ser expresso como "\
+                         "uma porcentagem, por exemplo 50%% (de $(nproc)). O padrão é 100%%.")
 
 parser.add_argument("--plan", metavar="FILE", default="-", \
-                    help="JSON formatted plan to be processed (default is to read from stdin).")
+                    help="Plano formatado em JSON a ser processado (o padrão é ler do stdin).")
 
 parser.add_argument("--joblog", metavar="FILE", default=None, \
-                    help="File into which job completion information will be written.")
+                    help="Arquivo no qual as informações de conclusão do trabalho serão gravadas.")
 
 parser.add_argument("--loadstats", metavar="FILE", default=None, \
-                    help="File into which load average and memory statistics will be written.")
+                    help="Arquivo no qual a média de carga e as estatísticas de memória serão gravadas.")
 
 parser.add_argument("--stats-interval", metavar="SECONDS", type=int, default=60, \
-                    help="Sampling interval in seconds for --loadstats. Default is 60.")
+                    help="Intervalo de amostragem em segundos para --loadstats. O padrão é 60.")
 
 group =  parser.add_mutually_exclusive_group()
 group.add_argument("--log-burst", action="store_true", default=True, \
-                    help="Burst job output into individual log files. This is the default.")
+                    help="Distribua a saída do trabalho em arquivos de log individuais. Este é o padrão.")
 group.add_argument("--no-log-burst", action="store_false", dest="log_burst", \
-                    help="Disable --log-burst, job output is only written to stdout.")
+                    help="Desativar --log-burst, a saída do trabalho é gravada apenas em stdout.")
 
 parser.add_argument("--log-combine", choices=["always", "never", "fail"], default="always", \
-                    help='Choose when to send job output to stdout. "fail" will send to stdout the ' \
-                         'log of failed jobs only, while "never" will not send any logs to stdout. ' \
-                         'Default is "always".')
+                    help='Escolha quando enviar a saída do trabalho para stdout. "fail" enviará para stdout o ' \
+                          'log apenas de trabalhos com falha, enquanto "nunca" não enviará nenhum log para stdout. ' \
+                          'O padrão é "sempre".')
 
 group =  parser.add_mutually_exclusive_group()
 group.add_argument("--with-bookends", action="store_true", default=True, \
-                    help="Top & tail combined logs with searchable markers. Default is enabled.")
+                    help="Top & tail combinados com marcadores pesquisáveis. Padrão é ativado.")
 group.add_argument("--without-bookends", action="store_false", dest="with_bookends", \
                     help="Disable --with-bookends")
 
 group =  parser.add_mutually_exclusive_group()
 group.add_argument("--halt-on-error", action="store_true", default=True, \
-                    help="Halt on first build failure. This is the default.")
+                    help="Interromper na primeira falha de compilação. Este é o padrão.")
 group.add_argument("--continue-on-error", action="store_false", dest="halt_on_error", \
-                    help="Disable --halt-on-error and continue building.")
+                    help="Desative --halt-on-error e continue construindo.")
 
 group =  parser.add_mutually_exclusive_group()
 group.add_argument("--fail-immediately", action="store_true", default=True, \
-                    help="With --halt-on-error, the build can either fail immediately or only after all " \
-                         "other active jobs have finished. Default is to fail immediately.")
+                    help="Com --halt-on-error, a compilação pode falhar imediatamente ou apenas depois de tudo" \
+                         "outras tarefas ativas foram concluídas. O padrão é falhar imediatamente.")
 group.add_argument("--fail-after-active", action="store_false", dest="fail_immediately", \
-                    help="With --halt-on-error, when an error occurs fail after all other active jobs have finished.")
+                    help="Com --halt-on-error, quando ocorre um erro, falha após a conclusão de todos os outros trabalhos ativos.")
 
 parser.add_argument("--auto-remove", action="store_true", default=False, \
-                    help="Automatically remove redundant source code directories. Default is disabled.")
+                    help="Remova automaticamente os diretórios de código-fonte redundantes. O padrão é desabilitado.")
 
 parser.add_argument("--progress", action="store_true", default=False, \
-                    help="Display progress information. Default is disabled")
+                    help="Exibir informações de progresso. O padrão é desabilitado")
 
 parser.add_argument("--verbose", action="store_true", default=False, \
                     help="Output verbose information to stderr.")
@@ -901,7 +901,7 @@ THREAD_CONTROL = os.environ["THREAD_CONTROL"]
 if args.debug:
     debug_log = "%s/debug.log" % THREAD_CONTROL
     DEBUG_LOG = open(debug_log, "w")
-    print("Debug information is being written to: %s\n" % debug_log, file=sys.stderr, flush=True)
+    print("As informações de depuração estão sendo gravadas em:%s\n" % debug_log, file=sys.stderr, flush=True)
 else:
     DEBUG_LOG = None
 
