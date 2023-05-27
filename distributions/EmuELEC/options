@@ -1,4 +1,4 @@
-### DISTRO INFORMATION ###
+#### DISTRO INFORMATION ###
 
 # Name of the Distro to build (full name, without special characters)
   DISTRONAME="EmuELEC"
@@ -11,8 +11,8 @@
 
 # Welcome Message for e.g. SSH Server (up to 5 Lines)
   GREETING0="##############################################"
-  GREETING1="#                 EmuELEC                    #"
-  GREETING2="#     Retro emulation for Amlogic Devices    #"
+  GREETING1="#         EmuELEC - GamerNinjaBrothers       #"
+  GREETING2="#           TURBO GAME NEVER DIES!           #"
   GREETING3="#             Based on CoreELEC              #"
   GREETING4="##############################################"
 
@@ -258,10 +258,31 @@
   DEFAULT_LINKER="gold"
 
 # start SX05RE added options
-
 LAKKA_MIRROR="http://sources.lakka.tv"
 
-LIBRETRO_CORES="2048 \
+# Excluidos:   cannonball(outrun engine) easyrpg(EasyRPG/Player) dinothawr(puzzle) mrboom(Bomberman) pocketcdg(Karaoke) pokemini(Obscure nintendo handheld emulator)
+# prboom(prboom for Kodi) reminiscence(Flashback) xrick(Game Engine) gme(Game_Music_Emu) nxengine(Cave Story)  dosbox-svn tic-80(fantasy computer) tyrquake(Quake 1)
+# uzem(ATMega644) fake_08(Pico-8) 2048(puzzle) 
+
+LIBRETRO_CORES="ppsspp \
+tyrquake \
+reminiscence \
+cannonball \
+mrboom \
+prboom \
+o2em \
+vecx \
+puae \
+scummvm \
+cap32 \
+meowpc98 \
+uae4arm \
+daphne \
+freeintv \
+gearcoleco \
+fceumm-mod \
+px68k \
+vice \
 81 \
 a5200 \
 atari800 \
@@ -273,55 +294,32 @@ beetle-supergrafx \
 beetle-vb \
 beetle-wswan \
 bluemsx \
-cannonball \
-cap32 \
-daphne \
-dinothawr \
-dosbox-svn \
-easyrpg \
-fake_08 \
 fbalpha2012 \
 fbneo \
 fceumm \
-fceumm-mod \
 flycast \
-freeintv \
 fuse-libretro \
 gambatte \
 gearboy \
-gearcoleco \
 gearsystem \
 genesis-plus-gx \
 genesis-plus-gx-wide \
-gme \
 gpsp \
 gw-libretro \
 handy \
 hatari \
 mame2003-plus \
 mame2010 \
-meowpc98 \
 mgba \
-mrboom \
 mupen64plus \
 neocd_libretro \
 nestopia \
-nxengine \
-o2em \
 opera \
 parallel-n64 \
 pcsx_rearmed \
 picodrive \
-pocketcdg \
-pokemini \
-ppsspp \
-prboom \
 prosystem \
-puae \
-px68k \
-reminiscence \
 sameboy \
-scummvm \
 snes9x \
 snes9x2002 \
 snes9x2005_plus \
@@ -329,21 +327,12 @@ snes9x2010 \
 spring \
 stella \
 tgbdual \
-tic-80 \
-tyrquake \
-xrick \
-uae4arm \
-uzem \
 vba-next \
-vbam \
-vecx \
-vice"
+vbam"
 
-LIBRETRO_EXTRA_CORES="chailove \
-crocods \
-desmume \
+# Excluidos: chailove lutro crocods 
+LIBRETRO_EXTRA_CORES="desmume \
 desmume-2015 \
-lutro \
 melonds \
 snes9x2005 \
 yabause \
