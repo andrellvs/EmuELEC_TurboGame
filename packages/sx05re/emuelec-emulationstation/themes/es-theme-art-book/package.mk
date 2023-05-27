@@ -2,7 +2,7 @@
 # Copyright (C) 2019-present Shanti Gilbert (https://github.com/shantigilbert)
 
 PKG_NAME="es-theme-art-book"
-PKG_VERSION="a16c561f6d40310cac8029c2bf4c68ff6cdd9333"
+PKG_VERSION="f827da8d659b8a8e26313e5357f99041b1905fc5"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
