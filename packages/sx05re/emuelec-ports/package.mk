@@ -13,7 +13,8 @@ PKG_SECTION="emuelec"
 PKG_SHORTDESC="EmuELEC Ports Meta Package"
 PKG_TOOLCHAIN="manual"
 
-# REMOVIDOS:  VVVVVV \ bermuda \sdlpop \
+# REMOVIDOS:  VVVVVV \ bermuda \sdlpop \ bstone \
+
 
 
 
@@ -31,7 +32,6 @@ PKG_DEPENDS_TARGET+=" commander-genius \
                 chocolate-doom \
                 lzdoom \
                 supermariowar \
-                bstone \
                 hurrican \
                 cdogs-sdl \
                 abuse \
