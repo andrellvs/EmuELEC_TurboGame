@@ -6,7 +6,7 @@ PKG_VERSION="074936c04692c8dd8003b6bc6ccd2298d83d0c8b"
 PKG_LICENSE="MIT"
 PKG_SITE="https://github.com/nesbox/TIC-80"
 PKG_URL="$PKG_SITE.git"
-PKG_DEPENDS_TARGET="toolchain tic-80:host"
+PKG_DEPENDS_TARGET="toolchain"
 PKG_LONGDESC="TIC-80 is a fantasy computer for making, playing and sharing tiny games."
 GET_HANDLER_SUPPORT="git"
 
