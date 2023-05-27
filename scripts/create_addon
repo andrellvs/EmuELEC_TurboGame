@@ -12,24 +12,24 @@ SYNOPSIS
        ./script/create_addon [OPTION] [addons]...
 
 DESCRIPTION
-       create_addon builds one or more addons.
+       create_addon constrói um ou mais addons.
 
        --show-only
-              output the list of packages, which are intented to build
+             saída a lista de pacotes, que se destinam a construir
 
-       --help shows this message
+       --help mostra esta mensagem
 
        [addons]
-              list of addons to build.
-              The addons can identified by:
-              - the name of the addon
-              - a group name of addons
-                  * all - all addons found under packages and project/*/packages
-                  * official - all addons found under packages/addons
-                  * binary - all addons found under packages/mediacenter/kodi-binary-addons
-              - a regex term (grep styled), the term is automatic sorounded with string begin and end (^[term]$)
+              lista de addons para construir.
+               Os complementos podem ser identificados por:
+               - o nome do complemento
+               - um nome de grupo de addons
+                   * all - todos os addons encontrados em packages e project/*/packages
+                   * oficial - todos os addons encontrados em pacotes/addons
+                   * binary - todos os addons encontrados em packages/mediacenter/kodi-binary-addons
+               - um termo regex (estilo grep), o termo é arredondado automaticamente com início e fim da string (^[term]$)
 
-              addons can removed from list with a leading minus.
+               addons podem ser removidos da lista com um sinal de menos.
 
 EXAMPLE
        build all addons
@@ -90,8 +90,8 @@ get_addons() {
   unset -f exit
 
   if [ ${count} -eq 0 -a -n "${filter}" ]; then
-    echo  "$(print_color CLR_ERROR "ERROR: no addons matched for filter ${filter}")" >&2
-    echo  "For more information type: ./scripts/create_addon --help" >&2
+    echo  "$(print_color CLR_ERROR "ERRO: nenhum complemento correspondente ao filtro ${filter}")" >&2
+    echo  "Para mais informações digite: ./scripts/create_addon --help" >&2
     die
   fi
 }
@@ -172,7 +172,7 @@ if MTADDONBUILD=yes start_multithread_build "${wanted_addons:1}"; then
   exit 0
 elif [ -f "${THREAD_CONTROL}/addons.failed" ]; then
   echo >&2
-  print_color CLR_ERROR "FAILED ADDONS:\n" >&2
+  print_color CLR_ERROR "ADDONS COM FALHA:\n" >&2
   while read -r addon logfile; do
     if [ -n "${addon}" ]; then
       if [ -n "${logfile}" ]; then
@@ -184,5 +184,5 @@ elif [ -f "${THREAD_CONTROL}/addons.failed" ]; then
   done < "${THREAD_CONTROL}/addons.failed"
   die
 else
-  die "$(print_color CLR_ERROR "UNKNOWN BUILD FAILURE OR INABILITY TO GENERATE PLAN")"
+  die "$(print_color CLR_ERROR "FALHA DE CONSTRUÇÃO DESCONHECIDA OU INCAPACIDADE DE GERAR PLANO")"
 fi
