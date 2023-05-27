@@ -242,7 +242,7 @@
   
 LAKKA_MIRROR="http://sources.lakka.tv"
 
-#REMOVIDOS: dosbox-svn \
+#REMOVIDOS: dosbox-svn \ ppsspp \
 
 LIBRETRO_CORES="2048 \
 81 \
@@ -293,7 +293,6 @@ pcsx_rearmed \
 picodrive \
 pocketcdg \
 pokemini \
-ppsspp \
 prboom \
 prosystem \
 puae \
