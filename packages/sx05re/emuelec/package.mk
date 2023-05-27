@@ -16,7 +16,7 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 PKG_TOOLCHAIN="make"
 
-#REMOVIDOS: PPSSPPSDL duckstation ecwolf jzintv flycastsa
+#REMOVIDOS: PPSSPPSDL duckstation ecwolf jzintv flycastsa dolphinSA
 #PKG_EXPERIMENTAL="munt nestopiaCV quasi88 xmil np2kai hypseus-singe dosbox-x"
 PKG_EMUS="$LIBRETRO_CORES advancemame amiberry hatarisa openbor dosbox-staging mupen64plus-nx mupen64plus-nx-alt scummvmsa stellasa solarus dosbox-pure pcsx_rearmed potator freej2me fmsx-libretro "
 PKG_TOOLS="emuelec-tools"
@@ -50,7 +50,7 @@ for discore in munt_neon quicknes reicastsa_old reicastsa parallel-n64 pcsx_rear
 PKG_DEPENDS_TARGET+=" swanstation emuelec-32bit-libs"
 
 if [ "$PROJECT" == "Amlogic-ng" ]; then
-	PKG_DEPENDS_TARGET+=" dolphinSA"
+	PKG_DEPENDS_TARGET+=""
 fi
 
 fi
