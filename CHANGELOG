@@ -32,6 +32,9 @@ https://github.com/andrellvs/EmuELEC_NinjaBrothers/tree/dev/packages/sx05re/emue
 
 - PPSSPP: Arquivo "max-fps-setting.patch" exlcuído por impedir a compilação do emulador.
 - RTL8821CU/package.mk - Atualizada a PKG_VERSION para : PKG_VERSION="e49409f22ceea0d5b5ef431e6170580028b84c9d"
+PKG_VERSION="e49409f22ceea0d5b5ef431e6170580028b84c9d"
+PKG_SHA256="96737955e76126cc8c9eb88e1e8d874819697d085e8a60894c53893068e89900"
+
 - POPPLER/package.mk - Copiado o MK da BRANCH DEV.4.6 que é atualizada e diferente.
 - 
 - MEDIA PLAYER DE MP3 AQUI:
