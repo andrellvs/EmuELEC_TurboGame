@@ -2,10 +2,10 @@
 # Copyright (C) 2019-present Shanti Gilbert (https://github.com/shantigilbert)
 
 PKG_NAME="poppler"
-PKG_VERSION="32fa2888eaaaaf80e5d2338cb8cb8b773ccfd4d3"
+PKG_VERSION="61ab8a8da0ae2bd6f8e7e6f60d5970f7f87cd790c1620f0fe6fbcbdc095c7571"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/freedesktop/poppler"
-PKG_URL="$PKG_SITE.git"
+PKG_URL="${PKG_SITE}/-/archive/${_PKG_TAG}/${PKG_NAME}-${_PKG_TAG}.tar.gz"
 PKG_DEPENDS_TARGET="toolchain zlib libpng libjpeg-turbo boost freetype fontconfig glib glib:host"
 PKG_LONGDESC="The poppler pdf rendering library "
 PKG_TOOLCHAIN="cmake"
