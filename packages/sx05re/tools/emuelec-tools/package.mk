@@ -10,6 +10,7 @@ PKG_DEPENDS_TARGET="toolchain"
 PKG_SHORTDESC="EmuELEC tools metapackage"
 PKG_SECTION="virtual"
 
+#PKG_REMOVIDOS=poppler \
 PKG_DEPENDS_TARGET+=" ffmpeg \
                       libjpeg-turbo \
                       common-shaders \
@@ -23,7 +24,6 @@ PKG_DEPENDS_TARGET+=" ffmpeg \
                       jslisten \
                       evtest \
                       mpv \
-                      poppler \
                       bluetool \
                       patchelf \
                       fbgrab \
