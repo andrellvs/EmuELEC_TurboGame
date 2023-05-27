@@ -2,14 +2,14 @@
 
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
-# Copyright (C) 2016-present Team LibreELEC (https://libreelec.tv)
+# Copyright (C) 2016-presente Equipe LibreELEC (https://libreelec.tv)
 
-################################################################################
-# variables such as ${ROOT} ${PATH} etc... that are required for this
-# script to work must be passed via env ... in scripts/image
-################################################################################
+################################################### #############################
+# variáveis ​​como ${ROOT} ${PATH} etc... que são necessárias para isso
+# script para funcionar deve ser passado via env ... em scripts/image
+################################################### #############################
 
-# set variables
+# sete variáveis
 LE_TMP=$(mktemp -d -p ${TARGET_IMG})
 SAVE_ERROR="${LE_TMP}/save_error"
 
@@ -35,19 +35,19 @@ if [ -n "${SUBDEVICE}" ]; then
 fi
 DISK="${DISK_BASENAME}.img"
 
-# functions
+# funções
 cleanup() {
-  echo -e "image: cleanup...\n"
+  echo -e "imagem: limpeza...\n"
   rm -rf "${LE_TMP}"
 }
 
 show_error() {
-  echo "image: An error has occurred..."
+  echo "imagem: Ocorreu um erro..."
   echo
   if [ -s "${SAVE_ERROR}" ]; then
     cat "${SAVE_ERROR}"
   else
-    echo "Folder ${LE_TMP} might be out of free space..."
+    echo "A pasta ${LE_TMP} pode estar sem espaço livre..."
   fi
   echo
   cleanup
@@ -57,16 +57,16 @@ show_error() {
 trap cleanup SIGINT
 
 # create an image
-echo -e "\nimage: creating sparse file for disk image ${DISK##*/}..."
+echo -e "\nimage: criando arquivo esparso para imagem de disco ${DISK##*/}..."
 dd if=/dev/zero of="${DISK}" bs=1M count=0 seek="${DISK_SIZE}" conv=fsync >"${SAVE_ERROR}" 2>&1 || show_error
 
 # write a disklabel
-echo "image: creating ${DISK_LABEL} partition table..."
+echo "imagem: criando ${DISK_LABEL} tabela de partição..."
 parted -s "${DISK}" mklabel ${DISK_LABEL}
 sync
 
-# create partitions
-echo "image: creating partitions..."
+# cria partições
+echo "imagem: criando partições..."
 
 SYSTEM_PART_END=$(( ${SYSTEM_PART_START} + (${SYSTEM_SIZE} * 1024 * 1024 / 512) - 1 ))
 STORAGE_PART_START=$(( ${SYSTEM_PART_END} + 1 ))
@@ -85,24 +85,24 @@ sync
 
 if [ "${BOOTLOADER}" = "syslinux" ]; then
   # write mbr
-  echo "image: writing mbr..."
+  echo "imagem: escrevendo mbr..."
   dd bs=440 count=1 conv=fsync,notrunc if="${TOOLCHAIN}/share/syslinux/gptmbr.bin" of="${DISK}" >"${SAVE_ERROR}" 2>&1 || show_error
 fi
 
-# create part2 to format and copy files
-echo "image: creating sparse file for part2..."
+# cria part2 para formatar e copiar arquivos
+echo "imagem: criando arquivo esparso para part2..."
 STORAGE_PART_COUNT=$(( ${STORAGE_PART_END} - ${STORAGE_PART_START} + 1 ))
 sync
 dd if="${DISK}" of="${LE_TMP}/part2.ext4" bs=512 count=0 seek="${STORAGE_PART_COUNT}" conv=fsync >"${SAVE_ERROR}" 2>&1 || show_error
 
-# create filesystem on part2
-echo "image: creating filesystem on part2..."
+# cria sistema de arquivos na parte 2
+echo "imagem: criando sistema de arquivos na parte 2..."
 mke2fs -F -q -t ext4 -m 0 "${LE_TMP}/part2.ext4"
 tune2fs -L "${DISTRO_DISKLABEL}" -U ${UUID_STORAGE} "${LE_TMP}/part2.ext4" >"${SAVE_ERROR}" 2>&1 || show_error
 e2fsck -n "${LE_TMP}/part2.ext4" >"${SAVE_ERROR}" 2>&1 || show_error
 sync
 
-# add resize mark
+# adicionar marca de redimensionamento
 mkdir "${LE_TMP}/part2.fs"
 touch "${LE_TMP}/part2.fs/.please_resize_me"
 echo "image: populating filesystem on part2..."
@@ -110,19 +110,19 @@ populatefs -U -d "${LE_TMP}/part2.fs" "${LE_TMP}/part2.ext4" >"${SAVE_ERROR}" 2>
 sync
 e2fsck -n "${LE_TMP}/part2.ext4" >"${SAVE_ERROR}" 2>&1 || show_error
 
-# merge part2 into disk image
-echo "image: merging part2 into disk image..."
+# mescla a parte 2 na imagem do disco
+echo "imagem: mesclando a parte 2 na imagem do disco..."
 dd if="${LE_TMP}/part2.ext4" of="${DISK}" bs=512 seek="${STORAGE_PART_START}" conv=fsync,notrunc >"${SAVE_ERROR}" 2>&1 || show_error
 
-# create disk image for virtual appliance
+# cria imagem de disco para dispositivo virtual
 if [ "${PROJECT}" = "Generic" ]; then
   echo "image: creating open virtual appliance..."
   # duplicate ${DISK} so anything we do to it directly doesn't effect original
   dd if="${DISK}" of="${DISK_BASENAME}.tmp" bs=1M conv=fsync >"${SAVE_ERROR}" 2>&1 || show_error
 fi
 
-# create part1 to format and copy files
-echo "image: creating sparse file for part1..."
+# cria part1 para formatar e copiar arquivos
+echo "imagem: criando arquivo esparso para part1 ..."
 SYSTEM_PART_COUNT=$(( ${SYSTEM_PART_END} - ${SYSTEM_PART_START} + 1 ))
 sync
 dd if=/dev/zero of="${LE_TMP}/part1.fat" bs=512 count=0 seek="${SYSTEM_PART_COUNT}" conv=fsync >"${SAVE_ERROR}" 2>&1 || show_error
