@@ -105,7 +105,7 @@ sync
 # adicionar marca de redimensionamento
 mkdir "${LE_TMP}/part2.fs"
 touch "${LE_TMP}/part2.fs/.please_resize_me"
-echo "image: populating filesystem on part2..."
+echo "image: preenchendo o sistema de arquivos na parte 2..."
 populatefs -U -d "${LE_TMP}/part2.fs" "${LE_TMP}/part2.ext4" >"${SAVE_ERROR}" 2>&1 || show_error
 sync
 e2fsck -n "${LE_TMP}/part2.ext4" >"${SAVE_ERROR}" 2>&1 || show_error
