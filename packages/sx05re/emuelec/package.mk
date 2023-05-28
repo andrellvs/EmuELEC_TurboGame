@@ -16,8 +16,9 @@ PKG_IS_ADDON="no"
 PKG_AUTORECONF="no"
 PKG_TOOLCHAIN="make"
 
-PKG_EXPERIMENTAL="munt nestopiaCV quasi88 xmil np2kai hypseus-singe dosbox-x"
-PKG_EMUS="$LIBRETRO_CORES advancemame PPSSPPSDL amiberry hatarisa openbor dosbox-staging mupen64plus-nx mupen64plus-nx-alt scummvmsa stellasa solarus dosbox-pure pcsx_rearmed ecwolf potator freej2me duckstation flycastsa fmsx-libretro jzintv"
+#PKG_EXPERIMENTAL="munt nestopiaCV quasi88 xmil np2kai hypseus-singe dosbox-x"
+#PKG_REMOVIDOS:dolphinSA advancemame PPSSPPSDL amiberry hatarisa openbor dosbox-staging mupen64plus-nx mupen64plus-nx-alt scummvmsa stellasa solarus dosbox-pure pcsx_rearmed ecwolf potator freej2me duckstation flycastsa fmsx-libretro jzintv
+PKG_EMUS="$LIBRETRO_CORES "
 PKG_TOOLS="emuelec-tools"
 PKG_DEPENDS_TARGET+=" $PKG_TOOLS $PKG_EMUS $PKG_EXPERIMENTAL emuelec-ports"
 
@@ -49,7 +50,7 @@ for discore in munt_neon quicknes reicastsa_old reicastsa parallel-n64 pcsx_rear
 PKG_DEPENDS_TARGET+=" swanstation emuelec-32bit-libs"
 
 if [ "$PROJECT" == "Amlogic-ng" ]; then
-	PKG_DEPENDS_TARGET+=" dolphinSA"
+	PKG_DEPENDS_TARGET+=""
 fi
 
 fi
