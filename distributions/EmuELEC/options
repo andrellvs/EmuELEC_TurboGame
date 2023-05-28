@@ -236,6 +236,8 @@
 
 
 # start SX05RE added options
+
+#REMOVIDOS: dosbox-svn \
   
 LAKKA_MIRROR="http://sources.lakka.tv"
 
@@ -252,7 +254,6 @@ bluemsx \
 cannonball \
 cap32 \
 dinothawr \
-dosbox-svn \
 fbalpha2012 \
 fbneo \
 fceumm \
