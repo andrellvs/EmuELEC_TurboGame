@@ -50,7 +50,7 @@
   PULSEAUDIO_SUPPORT="yes"
 
 # build and install espeak support (yes / no)
-  ESPEAK_SUPPORT="no"
+  ESPEAK_SUPPORT="yes"
 
 # build and install with BluRay support (yes / no)
   KODI_BLURAY_SUPPORT="yes"
@@ -242,8 +242,7 @@
   
 LAKKA_MIRROR="http://sources.lakka.tv"
 
-#REMOVIDOS: dosbox-svn \ ppsspp \ tic-80 \ easyrpg \dinothawr \cannonball \mrboom \reminiscence \xrick \ nxengine \prboom \tyrquake\ pocketcdg \
-
+#REMOVIDOS: dosbox-svn \ ppsspp \ tic-80 \ easyrpg \dinothawr \cannonball \mrboom \reminiscence \xrick \ nxengine \prboom \tyrquake\ pocketcdg \gme \uzem \
 
 
 
@@ -272,7 +271,6 @@ gearboy \
 gearsystem \
 genesis-plus-gx \
 genesis-plus-gx-wide \
-gme \
 gpsp \
 gw-libretro \
 handy \
@@ -303,14 +301,12 @@ spring \
 stella \
 tgbdual \
 uae4arm \
-uzem \
 vba-next \
 vbam \
 vecx \
 vice"
 
 #REMOVIDOS: crocods \lutro \chailove \
-
 
 LIBRETRO_EXTRA_CORES="desmume \
 desmume-2015 \
