@@ -10,6 +10,9 @@ PKG_URL="https://github.com/PCRE2Project/pcre2/releases/download/pcre2-${PKG_VER
 
  - ERRO CORRIGIDO DOSBOX-SVN EXTRAI ELE DA LINHA ABAIXO:
  https://github.com/andrellvs/Neo_EmuELEC/edit/7-master-3.9.32bit.S905W-FULL/distributions/EmuELEC/options
+ 
+ - ERRO CORRIGIDO  PPSSPPSDL
+ https://github.com/andrellvs/Neo_EmuELEC/edit/7-master-3.9.32bit.S905W-FULLpackages/sx05re/emuelec/package.mk
 
 ==================
 
