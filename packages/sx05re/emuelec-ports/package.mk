@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Copyright (C) 2020-present Shanti Gilbert (https://github.com/shantigilbert)
-
+#REMOVIDOS: commander-genius devilutionX sdlpop VVVVVV opentyrian
 PKG_NAME="emuelec-ports"
 PKG_VERSION=""
 PKG_REV="1"
@@ -8,7 +8,7 @@ PKG_ARCH="any"
 PKG_LICENSE="GPLv3"
 PKG_SITE=""
 PKG_URL=""
-PKG_DEPENDS_TARGET="toolchain jinja2:host pyyaml:host commander-genius devilutionX sdlpop VVVVVV opentyrian"
+PKG_DEPENDS_TARGET="toolchain jinja2:host pyyaml:host "
 PKG_SECTION="emuelec"
 PKG_SHORTDESC="EmuELEC Ports Meta Package"
 PKG_TOOLCHAIN="manual"
