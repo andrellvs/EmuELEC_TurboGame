@@ -35,7 +35,7 @@ PKG_TOOLCHAIN="manual"
 #                hurrican \
 #                cdogs-sdl \
 #                abuse \
-3                fheroes2"
+#                fheroes2"
 
 amlogicports=""
 # hhports=" openjazz"
