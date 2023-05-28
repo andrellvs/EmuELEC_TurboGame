@@ -14,31 +14,33 @@ PKG_SHORTDESC="EmuELEC Ports Meta Package"
 PKG_TOOLCHAIN="manual"
 
 
-PKG_DEPENDS_TARGET+=" commander-genius \
-                devilutionX \
-                sdlpop \
-                VVVVVV \
-                opentyrian \
-                bermuda \
-                hodesdl \
-                hydracastlelabyrinth \
-                eduke \
-                rigelengine \
-                sonic2013 \
-                soniccd \
-                supertux \
-                supertuxkart \
-                chocolate-doom \
-                lzdoom \
-                supermariowar \
-                bstone \
-                hurrican \
-                cdogs-sdl \
-                abuse \
-                fheroes2"
+#PKG_DEPENDS_TARGET+=" commander-genius \
+#                devilutionX \
+#                sdlpop \
+#                VVVVVV \
+#                opentyrian \
+#                bermuda \
+#                hodesdl \
+#                hydracastlelabyrinth \
+#                eduke \
+#                rigelengine \
+#                sonic2013 \
+#                soniccd \
+#                supertux \
+#                supertuxkart \
+#                chocolate-doom \
+#                lzdoom \
+#                supermariowar \
+#                bstone \
+#                hurrican \
+#                cdogs-sdl \
+#                abuse \
+3                fheroes2"
 
 amlogicports=""
-hhports=" openjazz"
+# hhports=" openjazz"
+hhports=""
+
 
 if [ "$PROJECT" == "Amlogic"* ]; then
 	PKG_DEPENDS_TARGET+="${amlogicports}"
