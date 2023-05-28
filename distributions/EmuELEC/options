@@ -237,10 +237,10 @@
 
 # start SX05RE added options
   
+#REMOVIDOS:2048 \cannonball \ dinothawr \gme \ reminiscence \tyrquake \xrick \ uzem \
 LAKKA_MIRROR="http://sources.lakka.tv"
 
-LIBRETRO_CORES="2048 \
-81 \
+LIBRETRO_CORES="81 \
 atari800 \
 beetle-ngp \
 beetle-pce \
@@ -249,9 +249,7 @@ beetle-supergrafx \
 beetle-vb \
 beetle-wswan \
 bluemsx \
-cannonball \
 cap32 \
-dinothawr \
 dosbox-svn \
 fbalpha2012 \
 fbneo \
@@ -263,7 +261,6 @@ gambatte \
 gearboy \
 gearsystem \
 genesis-plus-gx \
-gme \
 gpsp \
 gw-libretro \
 handy \
@@ -287,7 +284,6 @@ prboom \
 prosystem \
 puae \
 px68k \
-reminiscence \
 sameboy \
 scummvm \
 snes9x \
@@ -296,23 +292,19 @@ snes9x2005_plus \
 snes9x2010 \
 stella \
 tgbdual \
-tyrquake \
-xrick \
 uae4arm \
-uzem \
 vba-next \
 vbam \
 vecx \
 vice"
 
+#REMOVIDOS:chailove \easyrpg \lutro \
+
 LIBRETRO_EXTRA_CORES="beetle-lynx \ 
-chailove \
 crocods \
 daphne \
 desmume \
 desmume-2015 \
-easyrpg \
-lutro \
 melonds \
 mesen \
 pocketcdg \
