@@ -9,12 +9,11 @@ PKG_URL=""
 PKG_DEPENDS_TARGET="toolchain"
 PKG_SHORTDESC="EmuELEC tools metapackage"
 PKG_SECTION="virtual"
+#REMOVIDOS:  Skyscraper \ scraper \ poppler \
 
 PKG_DEPENDS_TARGET+=" ffmpeg \
                       libjpeg-turbo \
                       common-shaders \
-                      scraper \
-                      Skyscraper \
                       MC \
                       libretro-bash-launcher \
                       SDL_GameControllerDB \
@@ -25,7 +24,6 @@ PKG_DEPENDS_TARGET+=" ffmpeg \
                       jslisten \
                       evtest \
                       mpv \
-                      poppler \
                       bluetool \
                       patchelf \
                       fbgrab \
