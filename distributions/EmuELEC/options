@@ -50,7 +50,7 @@
   PULSEAUDIO_SUPPORT="yes"
 
 # build and install espeak support (yes / no)
-  ESPEAK_SUPPORT="yes"
+  ESPEAK_SUPPORT="no"
 
 # build and install with BluRay support (yes / no)
   KODI_BLURAY_SUPPORT="yes"
