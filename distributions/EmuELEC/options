@@ -265,11 +265,6 @@ LAKKA_MIRROR="http://sources.lakka.tv"
 # uzem(ATMega644) fake_08(Pico-8) 2048(puzzle) 
 
 LIBRETRO_CORES="ppsspp \
-tyrquake \
-reminiscence \
-cannonball \
-mrboom \
-prboom \
 o2em \
 vecx \
 puae \
