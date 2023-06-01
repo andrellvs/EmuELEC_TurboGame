@@ -3,7 +3,7 @@
 
 PKG_NAME="emuelec-emulationstation"
 PKG_VERSION="2bb1eb91730cb0d41c12e2ca35f1d56a8ba38c3b"
-PKG_GIT_CLONE_BRANCH="EmuELEC"
+PKG_GIT_CLONE_BRANCH="run-ahead"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
