@@ -1,5 +1,4 @@
 COMO COMPILAR O CÓDIGO:
-===============================================
 
 O CÓDIGO ORIGINAL APRESENTA ERROS. ESSES ERROS IMPEDEM SUA COMPILAÇÃO.
 
