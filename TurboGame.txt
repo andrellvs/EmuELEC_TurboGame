@@ -1,11 +1,11 @@
-COMO COMPILAR O CÓDIGO EMUELEC:
-=
------------------------------------------------------------------------------------------------------------------------------
+COMO COMPILAR O CÓDIGO EMUELEC, CONCERTANDO BUGS E ERROS DIVERSOS:
+=============================================================================================================================
+
 SUB-DIVISÕES DE UMA VERSÃO DE APLICATIVO NO GITHUB
 
 EMUELEC ----SUB VERSÃO BRANCH ----SUB VERSÕES MENORES COMMITS
 
------------------------------------------------------------------------------------------------------------------------------
+=============================================================================================================================
 O CÓDIGO ORIGINAL APRESENTA ERROS. ESSES ERROS IMPEDEM SUA COMPILAÇÃO. ENTÃO PRECISEI CORRIGIR OS ARQUIVOS CHAMADOS PACKAGE.MK
 
 A)
@@ -13,10 +13,10 @@ A)
 DEVIDO A DESATUALIZAÇÃO DE METADATAS; VERIFICAR O LINK DO SITE, O BRANCH ATUAL E COLOCAR SEU NR NO PKG_VERSION, ERRO DO CALCULO DO SHA256 ETC...
 EX:
 PKG_NAME="emuelec-emulationstation"  ----------------------------NOME DO PACKAGE.MK
-PKG_VERSION="a70313633ef29b57e2969b"-----------------------------COMMIT ATUAL 
-PKG_SHA256="41983493843140831498943"-----------------------------CALCULO SHA256
-PKG_GIT_CLONE_BRANCH="EmuELEC"-----------------------------------BRANCH
-PKG_SITE="https://github.com/EmuELEC/emuelec-emulationstation"
+PKG_VERSION="a70313633ef29b57e2969b"-----------------------------COMMIT ATUAL, VERIFICAR O MAIS ATUAL
+PKG_SHA256="41983493843140831498943"-----------------------------CALCULO SHA256, VERIFICAR SE CORRESPONDE
+PKG_GIT_CLONE_BRANCH="EmuELEC"-----------------------------------BRANCH, VERIFICAR SE AINDA EXISTE
+PKG_SITE="https://github.com/EmuELEC/emuelec-emulationstation"---SITE DO PACKAGE, VERIFICAR SE AINDA ESTÁ ONLINE
 PKG_URL="$PKG_SITE.git"
 
 B)
@@ -30,12 +30,81 @@ C)
 
 DEVIDO A ERRO DO SISTEMA EM COMPILAR; ISSO TE OBRIGA A RESETAR A COMPILAÇÃO EM PARTES OU TODA.
 
-RESETANDO UMA PARTE ESPECÍFICA:
+ - RESETANDO UMA PARTE ESPECÍFICA:
 PROJECT=Amlogic-ce DEVICE=Amlogic-ng ARCH=aarch64 DISTRO=EmuELEC ./scripts/clean nome_do_programa
 PROJECT=Amlogic-ce DEVICE=Amlogic-ng ARCH=aarch64 DISTRO=EmuELEC ./scripts/make nome_do_programa
 
-RESETE COMPLETO:
+ - RESETE COMPLETO:
 make clean && make distclean 
+
+=============================================================================================================================
+
+É POSSÍVEL ELIMINAR ERROS EXCLUINDO OS PACKAGES PROBLEMÁTICOS; ALÉM DE TORNAR A COMPILAÇÃO MENOR E MAIS DINÂMICA PRA COMPILAR
+EVITANDO HORAS DESPERDIÇADAS DE TRABALHO E SE LIVRANDO DE LIXO WARE.
+
+De acordo com o NOME DO PACKAGE voce vai no link abaixo do MK GERAL que exclui ele:
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+1) - SE ERRO NOS PACOTES: (LIBRETRO-CORES)
+
+"2048 81 a5200 atari800 beetle-lynx beetle-ngp beetle-pce beetle-pcfx beetle-supergrafx \
+beetle-vb beetle-wswan bluemsx cannonball cap32 daphne dinothawr dosbox-svn easyrpg \
+fake_08 fbalpha2012 fbneo fceumm fceumm-mod flycast freeintv fuse-libretro gambatte \
+gearboy gearcoleco gearsystem genesis-plus-gx genesis-plus-gx-wide gme gpsp gw-libretro \
+handy hatari mame2003-plus mame2010 meowpc98 mgba mrboom mupen64plus neocd_libretro \
+nestopia nxengine o2em opera parallel-n64 pcsx_rearmed picodrive pocketcdg pokemini \
+ppsspp prboom prosystem puae px68k reminiscence sameboy scummvm snes9x snes9x2002 \
+snes9x2005_plus snes9x2010 spring stella tgbdual tic-80 tyrquake xrick uae4arm \
+uzem vba-next vbam vecx vice 
+
+chailove crocods desmume desmume-2015 lutro melonds snes9x2005 yabause"
+mesen mesen-s quicknes virtualjaguar
+
+ - DELETE ELES POR AQUI: https://github.com/EmuELEC/EmuELEC/blob/dev/distributions/EmuELEC/options
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+2) - SE ERRO NOS PACOTES: (EMUELEC-PORTS)
+commander-genius devilutionX sdlpop VVVVVV  opentyrian 
+bermuda hodesdl hydracastlelabyrinth eduke rigelengine 
+sonic2013 soniccd supertux  chocolate-doom supertuxkart 
+lzdoom supermariowar bstone hurrican cdogs-sdl abuse   
+fheroes2 augustus xash3d  sonicmania  shovelknight tmntsr   
+               
+ - DELETE ELES POR AQUI: https://github.com/EmuELEC/EmuELEC/blob/dev/packages/sx05re/emuelec-ports/package.mk
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+3) - SE ERRO NOS PACOTES: (EMULADORES 32 BIT) 
+
+munt nestopiaCV quasi88 xmil np2kai hypseus-singe yabasanshiroSA fbneoSA same_cdi
+advancemame PPSSPPSDL amiberry hatarisa openbor dosbox-staging mupen64plus-nx mupen64plus-nx-alt scummvmsa stellasa solarus dosbox-pure pcsx_rearmed ecwolf potator freej2me duckstation flycastsa fmsx-libretro jzintv mupen64plussa
+
+swanstation lib32-essential lib32-retroarch emuelec-32bit-info lib32-flycast 
+lib32-mupen64plus lib32-pcsx_rearmed lib32-uae4arm lib32-parallel-n64 lib32-bennugd-monolithic 
+lib32-droidports lib32-box86 lib32-libusb
+
+dolphinSA
+
+ - DELETE ELES POR AQUI: https://github.com/EmuELEC/EmuELEC/blob/dev/packages/sx05re/emuelec/package.mk
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+4) - SE ERRO NOS PACOTES: (EMUELEC-TOOLS)
+Skyscraper \ scraper \ poppler \ ffmpeg \libjpeg-turbo \
+common-shaders \  MC \libretro-bash-launcher \SDL_GameControllerDB \
+util-linux \xmlstarlet \CoreELEC-Debug-Scripts \sixaxis \
+jslisten \evtest \mpv \bluetool \patchelf \ fbgrab \ sdljoytest \
+bash \ pyudev \dialog \ six \ git \dbus-python \pygobject \
+coreutils \wget \TvTextViewer \imagemagick \ htop \ libevdev \gptokeyb \
+exfat \351Files \box64"
+
+ - DELETE ELES POR AQUI: https://github.com/EmuELEC/EmuELEC/blob/dev/packages/sx05re/tools/emuelec-tools/package.mk
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+u-boot-script dtc CoreELEC-Debug-Scripts inject_bl301 nfs-utils dtb-xml megatools
+- DELETE ELES POR AQUI: https://github.com/EmuELEC/EmuELEC/blob/dev/projects/Amlogic-ce/devices/Amlogic-ng/options
+
+
+=============================================================================================================================
 
 
 
