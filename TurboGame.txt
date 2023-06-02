@@ -1,0 +1,42 @@
+COMO COMPILAR O CÓDIGO EMUELEC:
+=
+-----------------------------------------------------------------------------------------------------------------------------
+SUB-DIVISÕES DE UMA VERSÃO DE APLICATIVO NO GITHUB
+
+EMUELEC ----SUB VERSÃO BRANCH ----SUB VERSÕES MENORES COMMITS
+
+-----------------------------------------------------------------------------------------------------------------------------
+O CÓDIGO ORIGINAL APRESENTA ERROS. ESSES ERROS IMPEDEM SUA COMPILAÇÃO. ENTÃO PRECISEI CORRIGIR OS ARQUIVOS CHAMADOS PACKAGE.MK
+
+A)
+
+DEVIDO A DESATUALIZAÇÃO DE METADATAS; VERIFICAR O LINK DO SITE, O BRANCH ATUAL E COLOCAR SEU NR NO PKG_VERSION, ERRO DO CALCULO DO SHA256 ETC...
+EX:
+PKG_NAME="emuelec-emulationstation"  ----------------------------NOME DO PACKAGE.MK
+PKG_VERSION="a70313633ef29b57e2969b"-----------------------------COMMIT ATUAL 
+PKG_SHA256="41983493843140831498943"-----------------------------CALCULO SHA256
+PKG_GIT_CLONE_BRANCH="EmuELEC"-----------------------------------BRANCH
+PKG_SITE="https://github.com/EmuELEC/emuelec-emulationstation"
+PKG_URL="$PKG_SITE.git"
+
+B)
+
+DEVIDO A DEPENDÊNCIAS NÃO SATISFEITAS; VERIFICAR SE TODAS AS DEPENDENCIAS EXISTEM E ESTÃO TAMBEM ATUALIZADAS
+EX:
+PKG_DEPENDS_TARGET="toolchain SDL2 freetype curl freeimage vlc bash rapidjson ${OPENGLES} SDL2_mixer fping p7zip"
+
+
+C) 
+
+DEVIDO A ERRO DO SISTEMA EM COMPILAR; ISSO TE OBRIGA A RESETAR A COMPILAÇÃO EM PARTES OU TODA.
+
+RESETANDO UMA PARTE ESPECÍFICA:
+PROJECT=Amlogic-ce DEVICE=Amlogic-ng ARCH=aarch64 DISTRO=EmuELEC ./scripts/clean nome_do_programa
+PROJECT=Amlogic-ce DEVICE=Amlogic-ng ARCH=aarch64 DISTRO=EmuELEC ./scripts/make nome_do_programa
+
+RESETE COMPLETO:
+make clean && make distclean 
+
+
+
+
