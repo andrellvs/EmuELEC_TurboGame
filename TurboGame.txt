@@ -37,6 +37,11 @@ PROJECT=Amlogic-ce DEVICE=Amlogic-ng ARCH=aarch64 DISTRO=EmuELEC ./scripts/make 
  - RESETE COMPLETO:
 make clean && make distclean 
 
+D)
+
+USO INDEDIVO DE COMPILAÇÃO MULTI-THREAD; VOCE SOMENTE PODE COMPILAR O "TOOLCHAIN" USANDO MULTIPLOS PROCESSADORES.
+CASO FAÇA A COMPILAÇÃO GERAL ELE IRÁ APRENSENTAR ERROS DE "MAKE".
+
 =============================================================================================================================
 
 É POSSÍVEL ELIMINAR ERROS EXCLUINDO OS PACKAGES PROBLEMÁTICOS; ALÉM DE TORNAR A COMPILAÇÃO MENOR E MAIS DINÂMICA PRA COMPILAR
