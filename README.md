@@ -1,3 +1,19 @@
+  </div>
+  <div style="display: inline_block"><br>
+  <img align="right" height="200" width="400" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original.svg" />
+  <img align="center" height="60" width="80" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/msdos/msdos-original.svg" /> 
+  <img align="center" height="60" width="80"  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" />  
+  <img align="center" height="60" width="80"  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" />  
+  <img align="center" height="60" width="80"  src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Icons8_flat_linux.svg" /> 
+  <img align="center" height="60" width="80"  src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Icons8_flat_linux.svg" /> 
+
+  
+</div>
+
+
+
+
+
 # EmuELEC  
 Retro emulation for Amlogic devices.
 Based on  [CoreELEC](https://github.com/CoreELEC/CoreELEC) and [Lakka](https://github.com/libretro/Lakka-LibreELEC) with tidbits from [Batocera](https://github.com/batocera-linux/batocera.linux). I just combine them with [Batocera-Emulationstation](https://github.com/batocera-linux/batocera-emulationstation) and some standalone emulators ([Advancemame](https://github.com/amadvance/advancemame), [PPSSPP](https://github.com/hrydgard/ppsspp), [Reicast](https://github.com/reicast/reicast-emulator), [Amiberry](https://github.com/midwan/amiberry) and others). 
