@@ -1,18 +1,7 @@
   </div>
   <div style="display: inline_block"><br>
-  <img align="right" height="200" width="400" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original.svg" />
-  <img align="center" height="60" width="80" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/msdos/msdos-original.svg" /> 
-  <img align="center" height="60" width="80"  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" />  
-  <img align="center" height="60" width="80"  src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" />  
-  <img align="center" height="60" width="80"  src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Icons8_flat_linux.svg" /> 
-  <img align="center" height="60" width="80"  src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Icons8_flat_linux.svg" /> 
-
-  
+  <img align="right" height="600" width="600" src="[https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original.svg](https://videogamebrasileiro.fandom.com/pt-br/wiki/Turbo_Game_VG-9000T?file=Turbo_Game_CCE_VG-9000T_caixa_frente.jpg)" />
 </div>
-
-
-
-
 
 # EmuELEC  
 Retro emulation for Amlogic devices.
