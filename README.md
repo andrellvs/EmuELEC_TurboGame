@@ -1,6 +1,6 @@
   </div>
   <div style="display: inline_block"><br>
-  <img align="right" height="600" width="600" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/raspberrypi/raspberrypi-original.svg](https://videogamebrasileiro.fandom.com/pt-br/wiki/Turbo_Game_VG-9000T?file=Turbo_Game_CCE_VG-9000T_caixa_frente.jpg](https://static.wikia.nocookie.net/videogamebrasileiro/images/b/bb/Turbo_Game_CCE_VG-9000T_caixa_frente.jpg/revision/latest?cb=20220802002742&path-prefix=pt-br" />
+  <img align="right" height="600" width="600" src="https://static.wikia.nocookie.net/videogamebrasileiro/images/b/bb/Turbo_Game_CCE_VG-9000T_caixa_frente.jpg/revision/latest?cb=20220802002742&path-prefix=pt-br" />
 </div>
 
 # EmuELEC  
