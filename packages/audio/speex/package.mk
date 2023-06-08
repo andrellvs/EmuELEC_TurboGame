@@ -4,10 +4,10 @@
 
 PKG_NAME="speex"
 PKG_VERSION="1.2.1"
-PKG_SHA256="cc55cce69d8753940d56936f7a1fe6db4b302df144aec93a92de1c65b1a87681"
+PKG_SHA256="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 PKG_LICENSE="BSD"
 PKG_SITE="https://speex.org"
-PKG_URL="https://gitlab.xiph.org/xiph/speex/-/archive/Speex-1.2.1/speex-Speex-1.2.1.tar.bz2"
+PKG_URL="https://github.com/xiph/speex.git"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_LONGDESC="An Open Source Software patent-free audio compression format designed for speech."
 PKG_TOOLCHAIN="autotools"
