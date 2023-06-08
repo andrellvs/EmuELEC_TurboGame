@@ -3,7 +3,7 @@
 # Copyright (C) 2016-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="speex"
-PKG_VERSION="1.2.1"
+PKG_VERSION="91a59756390be146fa1c8bc73f9825b9f79b686c"
 PKG_SHA256="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 PKG_LICENSE="BSD"
 PKG_SITE="https://speex.org"
