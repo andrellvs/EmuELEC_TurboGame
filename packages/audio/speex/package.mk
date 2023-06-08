@@ -3,10 +3,11 @@
 # Copyright (C) 2016-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="speex"
-PKG_VERSION="1.2.0"
-PKG_SHA256="eaae8af0ac742dc7d542c9439ac72f1f385ce838392dc849cae4536af9210094"
+PKG_VERSION="91a59756390be146fa1c8bc73f9825b9f79b686c"
+PKG_SHA256="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
 PKG_LICENSE="BSD"
 PKG_SITE="https://speex.org"
-PKG_URL="http://downloads.us.xiph.org/releases/speex/speex-$PKG_VERSION.tar.gz"
+PKG_URL="https://github.com/xiph/speex.git"
 PKG_DEPENDS_TARGET="toolchain"
 PKG_LONGDESC="An Open Source Software patent-free audio compression format designed for speech."
+PKG_TOOLCHAIN="autotools"
