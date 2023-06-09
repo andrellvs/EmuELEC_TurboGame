@@ -8,7 +8,7 @@ CORREÇÕES ABAIXO:
  - Mudar a versão do EmuELEC no menu inicial:
 https://github.com/andrellvs/EmuELEC_NinjaBrothers/edit/master_REBORN/packages/sx05re/emuelec/config/EE_VERSION
  - Mudar a versão do EmuELEC NA PASTA DE COMPILAÇÃO:
-
+https://github.com/andrellvs/EmuELEC_TurboGame/blob/2-dev-4.6-S9X3.X4-SLIM/distributions/EmuELEC/version
 
 - Adicionar temas aqui:(adicionados: es-theme-Chicuelo / es-theme-EmuELEC-carbon/ )
 https://github.com/andrellvs/EmuELEC_NinjaBrothers/blob/dev/packages/sx05re/emuelec-emulationstation/package.mk
