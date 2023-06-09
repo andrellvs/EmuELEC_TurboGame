@@ -1,8 +1,8 @@
 # OS_MAJOR: OS major Version
-  OS_MAJOR="1"
+  OS_MAJOR="4"
 
 # OS_MINOR: OS minor Version
-  OS_MINOR="0"
+  OS_MINOR="7"
 
 # OS_VERSION: OS Version
   OS_VERSION="${OS_MAJOR}.${OS_MINOR}"
