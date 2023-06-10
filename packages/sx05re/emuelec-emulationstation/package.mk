@@ -16,8 +16,8 @@ PKG_SHORTDESC="Emulationstation emulator frontend"
 PKG_BUILD_FLAGS="-gold"
 GET_HANDLER_SUPPORT="git"
 
-# themes for Emulationstation
-PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET Crystal TurboGame-es-theme-chicuelo-reworked TurboGame-es-theme-nostalgia-pure es-theme-art-book ARTFLIX-Cobalto ARTFLIX-Cobalto_Recalbox ARTFLIX-Cobalto_Recalbox Alekfull-Bello-Cobalto-v3 Crystal es-theme-ColorfulSupreme es-theme-Chicuelo es-theme-EmuELEC-carbon es-theme-PlayStation-X es-theme-epicnoir es-theme-snes-mini"
+# themes for Emulationstation = EXCLUIDO GRANDE DEMAIS: TurboGame-es-theme-nostalgia-pure
+PKG_DEPENDS_TARGET="$PKG_DEPENDS_TARGET Crystal TurboGame-es-theme-chicuelo-reworked  es-theme-art-book ARTFLIX-Cobalto ARTFLIX-Cobalto_Recalbox ARTFLIX-Cobalto_Recalbox Alekfull-Bello-Cobalto-v3 Crystal es-theme-ColorfulSupreme es-theme-Chicuelo es-theme-EmuELEC-carbon es-theme-PlayStation-X es-theme-epicnoir es-theme-snes-mini"
 
 pre_configure_target() {
 PKG_CMAKE_OPTS_TARGET=" -DENABLE_EMUELEC=1 -DDISABLE_KODI=1 -DENABLE_FILEMANAGER=1 -DGLES2=1"
