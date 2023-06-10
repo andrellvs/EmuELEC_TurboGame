@@ -2,7 +2,7 @@
 # Copyright (C) 2019-present Shanti Gilbert (https://github.com/shantigilbert)
 
 PKG_NAME="TurboGame-es-theme-chicuelo-reworked"
-PKG_VERSION="29a3b7b6db920900b4838d5f2bba0cef09d768bb"
+PKG_VERSION="1ad7dbc35ca2e99c29ed864d1111661cdb66f70a"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
